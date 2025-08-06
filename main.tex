@@ -1,0 +1,1557 @@
+\documentclass[11pt,a4paper]{report}
+
+\input{preamble}
+\usepackage{scalerel}
+\input{../macros.tex}
+\input{letterfonts}
+
+\title{\sffamily \textbf{\Huge Definitionen und Sätze der HM 1 \& 2}}
+\author{\sffamily \huge{Julian Molt}}
+%Aus den Vorlesungen von Prof. Dr. Timo Weidl in WS 2024 \& SS 2025
+\date{}
+
+\DeclarePairedDelimiter\pars{\lparen}{\rparen}
+
+
+
+\begin{document}
+
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+\chapter{Grundlagen der Mathematik}
+\section{Elementare Logik}
+\section{Naive Mengenlehre}
+\section{Relationen und Funktionen}
+\section{Die Zahlenbereiche}
+\section{Die komplexen Zahlen}
+\section{Zur Faktorisierung von Polynomen}
+
+\thm{Hauptsatz der Algebra}{
+Jedes Polynom über \(\CC\) vom Grad \(\deg{P} > 1\) besitzt mindestens eine Nullstelle \(z \in \CC\) (in der komplexen Ebene).
+}
+\section{Anwendungen}
+
+
+\chapter{Grundlagen der Analysis}
+\section{\texorpdfstring{Grenzwerte in \(\QQ\), Vollständigkeit}{Grenzwerte in Q, Vollständigkeit}}
+
+\dfn{}{
+Eine Folge \(a\) aus \(A\) ist eine Funktion \(a \colon \NN \to A\).\\
+Man schreibt:
+\begin{align*}
+	a(1) &= a_1 \in A,\ldots,\\
+	a(k) &= a_k \in A,\ldots,\\
+	a &= \Le(a_k\Ri)_{k=1}^{\infty} = \Le(a_1, a_2, a_3, \ldots\Ri)
+\end{align*}
+
+\begin{itemize}
+	\item Gleiche Werte können mehrfach angenommen werden.
+	\item Die Anordnung ist wichtig.
+\end{itemize}
+}
+
+\dfn{Grenzwert}{
+Man nennt \(r \in \QQ\) Grenzwert einer Folge rationaler Zahlen \(\Le(a_n\Ri)_{n\in\NN}\) genau dann, wenn
+\[\forall_{\varepsilon > 0} \enspace \exists_{N_{\varepsilon}\in\NN} \enspace \forall_{n\geqslant N_{\varepsilon}} \colon \enspace d\Le(a_n,r\Ri) < \varepsilon\]
+Man schreibt dann
+\[r = \lim_{n\to\infty} a_n \text{ oder kurz } a_n \overset{n\to\infty}{\longrightarrow} r\]
+Eine Folge ist \underline{konvergent}, wenn sie einen Grenzwert besitzt.\\
+Eine Folge ist \underline{divergent}, wenn sie keinen Grenzwert besitzt.
+}
+
+\dfn{}{
+Eine Folge rationaler Zahlen \(a = \Le(a_n\Ri)_{n=1}^{\infty}\) ist beschränkt, genau dann, wenn
+\[\exists_{C>0} \enspace \forall_{n\in\NN} \colon \enspace \abs{a_n} \leqslant C\]
+}
+
+\thm{}{Jede konvergente Folge ist beschränkt.}
+
+\thm{}{
+Wenn eine Folge \(\Le(a_n\Ri)_{n=1}^{\infty}\) gegen \(r\) konvergiert, dann konvergiert jede Teilfolge von \(a\) gegen denselben Grenzwert \(r\).
+}
+
+\thm{}{
+Wenn eine Folge \(\Le(a_k\Ri)_{k=1}^{\infty}\) konvergiert, dann ist der Grenzwert eindeutig bestimmt.
+}
+
+\dfn{\textsc{Cauchy}-Folge, Fundamentalfolge}{
+\(\Le(a_n\Ri)_{n=1}^{\infty}\) ist eine \textsc{Cauchy}-Folge, genau dann, wenn
+\[\forall_{\varepsilon > 0} \enspace \exists_{N_{\varepsilon} \in \NN} \enspace \forall_{n,m \geqslant N_{\varepsilon}} \colon \enspace d(a_n,a_m) < \varepsilon\]
+in \(\QQ \enspace d(a_n,a_m) = \abs{a_n-a_m}\)
+}
+
+\thm{}{Jede konvergente Folge ist eine \textsc{Cauchy}-Folge.}
+
+\section{Die reellen Zahlen}
+
+\dfn{Grundrechenarten auf \(\RR\)}{
+\(r,s \in \RR\)\\
+\(r = \Le[\Le(r_k\Ri)_{k=1}^{\infty}\Ri] \quad \Le(r_k\Ri)_{k=1}^{\infty} \in \CauchySeq(\QQ)\)\\
+\(r = \Le[\Le(s_k\Ri)_{k=1}^{\infty}\Ri] \quad \Le(s_k\Ri)_{k=1}^{\infty} \in \CauchySeq(\QQ)\)\\
+\begin{align*}
+	r + s &\eqdef \Le[\Le(r_k + s_k\Ri)_{k=1}^{\infty}\Ri]_{\sim}\\
+	r \cdot s &\eqdef \Le[\Le(r_k \cdot s_k\Ri)_{k=1}^{\infty}\Ri]_{\sim}
+\end{align*}
+}
+
+\dfn{Ordnung auf \(\RR\)}{
+\(r,s\) stehen für approximierte Folgen.\\
+\((r_k) \in r\)\\
+\((s_k) \in s\)
+\[r < s \quad \overset{\text{\tiny{def}}}{\Longleftrightarrow} \quad \exists_{p,q \in \QQ \colon p < q} \enspace \exists_{N \in \NN} \enspace \forall_{n \geqslant N} \colon \enspace r_n \leqslant p \leqslant q \leqslant s_n\]
+}
+
+\thm{}{
+Für beliebige \(r,s \in \RR\) gilt immer genau einer der folgenden Fälle:
+\begin{align*}
+	r &< s\\
+	r &= s\\
+	r &> s
+\end{align*}
+% Hier kommt maybe noch was hin. K.A. Ob das noch dazugehört.
+}
+
+%Maybe Absolutbetrag und Abstsand auf R auch eine Definition
+
+\section{\texorpdfstring{Grenzwerte in \(\RR\)}{Grenzwerte in R}}
+
+\dfn{Monotonie}{
+\((a_n), a_n \in \RR, n \in \NN\)\\
+Monoton wachsend \((a_n)\!\uparrow\)
+\[a_n \leqslant a_{n+1} \text{ für alle } n \in \NN\]
+Streng monoton wachsend \((a_n)\!\uparrow\uparrow\)
+\[a_n < a_{n+1} \text{ für alle } n \in \NN\]
+Monoton fallend  \((a_n)\!\downarrow\)
+\[a_n \geqslant a_{n+1} \text{ für alle } n \in \NN\]
+Streng monoton fallend \((a_n)\!\downarrow\downarrow\)
+\[a_n > a_{n+1} \text{ für alle } n \in \NN\]
+}
+
+\thm{}{Jede monotone beschränkte Folge reeller Zahlen besitzt einen Grenzwert in \(\RR\)}
+
+\section{Maximum, Minimum, Infimum, Supremum}
+
+\dfn{Maximum, Minimum}{
+Sei \(M \sbst \RR\). Wir sagen \(a \in \RR\) ist das\\
+Maximum von \(M\)
+\[(a = \max{M}) \overset{\text{\tiny{def}}}{\Longleftrightarrow} (a \in M) \wedge (\forall_{x \in M} \colon \enspace x \leqslant a)\]
+Minimum von \(M\)
+\[(a = \min{M}) \overset{\text{\tiny{def}}}{\Longleftrightarrow} (a \in M) \wedge (\forall_{x \in M} \colon \enspace x \geqslant a)\]
+}
+
+\dfn{}{
+Eine Menge \(M \in \RR\) ist beschränkt, wenn \(C > 0\) existiert, sodass
+\[\abs{x} \leqslant C \text{ für alle } x \in M\]
+}
+
+\dfn{}{
+Sei \(M \in \RR, M \neq \emptyset\).\\
+Menge der oberen Schranken von \(M\)
+\[M_+ = \Le\{y \in \RR \colon \forall_{x \in M} \colon x \leqslant y\Ri\}\]
+Menge der unteren Schranken von \(M\)
+\[M_- = \Le\{y \in \RR \colon \forall_{x \in M} \colon y \leqslant x\Ri\}\]
+}
+
+\dfn{}{
+Für \(M \sbst \RR\) nennen wir \(a \in \RR\) das Supremum von \(M \Leftrightarrow a = \sup{M} = \min{M_+}\), bzw. das Infimum von \(M \Leftrightarrow a = \inf{M} = \max{M_-}\)\\
+Falls \(\inf{M}\) bzw. \(\sup{M}\) existieren, dann sind diese eindeutig bestimmt.
+}
+
+\thm{Satz von Supremum und Infimum}{
+Ist \(M \neq \emptyset\) nach oben beschränkt, dann existiert \(a = \sup{M}\).\\
+Ist \(M \neq \emptyset\) nach unten beschränkt, dann existiert \(a = \inf{M}\).
+}
+
+\section{Die Zahl e}
+
+\thm{}{Die Folge \(\Le(x_n\Ri)\) konvergiert in \(\RR\).}
+
+\dfn{}{\[\e \coloneq \lim_{n \to \infty} x_n\]}
+
+\thm{}{\[x_n < \e < x_n + \frac{1}{n!} \cdot \frac{1}{n} \qquad n \in \NN\]}
+
+\thm{}{\(\e\) ist irrational.}
+
+\thm{}{\[\e = \lim_{n\to\infty} \Le(1 + \frac{1}{n}\Ri)^n\]}
+
+\section{Reihen}
+\dfn{}{
+Man sagt, dass die Reihe \(\sum_{k=1}^{\infty} a_k\) konvergiert, falls \(\Le(S_n\Ri)_{n=1}^{\infty}\) konvergiert.\\
+Man setzt dann
+\[\sum_{k=1}^{\infty} a_k = \lim_{n\to\infty} S_n\]
+Sonst divergiert die Reihe \(\sum_{k=1}^{\infty} a_k\).
+}
+
+\thm{Doppelreihen}{
+\(a_{m,n} > 0 \qquad m,n \in \NN\)\\
+Folgende Reihen konvergieren gleichzeitig und sind gleich:
+\[\sum_{(m,n)\in \NN \times \NN} = \sum_{m=1}^{\infty}\Le(\sum_{n=1}^{\infty} a_{m,n}\Ri) = \sum_{n=1}^{\infty}\Le(\sum_{m=1}^{\infty} a_{m,n}\Ri)\]
+}
+
+\dfn{}{Die Reihe \(\sum_{k=1}^{\infty} a_k\) konvergiert absolut, falls
+\[\sum_{k=1}^{\infty} \abs{a_k}\]
+konvergiert.
+}
+
+\thm{}{Jede absolut konvergente Reihe konvergiert.}
+
+%Umordnungssatz für abs. konv. Reihen?
+%Umordungssatz von Riemann?
+
+\thm{}{
+\(\prod_{k=1}^{\infty} a_k\) konvergiert genau dann, wenn die Reihe \(\sum_{k=1}^{\infty} \ln{(a_k)}\) konvergiert, wobei
+\[\ln{\Le(\prod_{k=1}^{\infty} a_k\Ri) = \sum_{k=1}^{\infty} \ln{(a_k)}}\]
+}
+
+\dfn{}{
+Eine Reihe \(\sum_{k=1}^{\infty} a_k\) konvergiert nach \textsc{Cesaro} gegen \(S\) genau dann, wenn
+\[S = \lim_{n\to\infty} \frac{1}{n}\Le(S_1 + \ldots + S_k\Ri)\]
+}
+
+\section{\texorpdfstring{Zur Struktur der Räume \(\mathbb{R}^n\) und \(\mathbb{C}^n\)}{Zur Struktur der Räume Rⁿ und Cⁿ}}
+
+\dfn{}{
+Eine Menge \(V\) nennt man Vektorraum über den Körper \(\KK\), falls die Operationen
+\begin{align*}
+	+ &\colon V \times V \to V\\
+	\cdot \:&\colon \KK \times V \to V
+\end{align*}
+existieren mit folgenden Eigenschaften:
+} %Jo hier fehlt noch was
+
+\dfn{Reelles Skalarprodukt}{
+Sei \(V\) ein Vektorraum über \(\KK = \RR\). Dann nennt man \(\langle\cdot,\cdot\rangle\colon V \times V \to \RR\) mit den Eigenschaften \((1)_{S\RR}\) - \((3)_{S\RR}\) ein (reelles) Skalarprodukt auf \(V\).
+}
+
+\dfn{Komplexes Skalarprodukt}{
+	Sei \(V\) ein Vektorraum über \(\KK = \CC\). Dann nennt man \(\langle\cdot,\cdot\rangle\colon V \times V \to \CC\) mit den Eigenschaften \((1)_{S\CC}\) - \((3)_{S\CC}\) ein (komplexes) Skalarprodukt auf \(V\).
+}
+
+\section{Metrische Räume}
+
+\dfn{\(\varepsilon\)-Umgebung}{
+\((M,d)\) metrischer Raum
+\[U_{\varepsilon}(x) = \Le\{y \in M \colon d(x,y) < \varepsilon\Ri\} \qquad x \in M,\,\varepsilon > 0\]
+}
+
+\dfn{Grenzwert einer Folge}{
+\(x_n \in M\)\\
+\(y \in M\)\\
+\((M,d)\) metrischer Raum
+\[y = \lim_{n \to \infty} x_n \quad \overset{\text{\tiny{def}}}{\Longleftrightarrow} \quad \forall_{\varepsilon > 0} \enspace \exists_{N_{\varepsilon} \in \NN} \enspace \forall_{n \geqslant N_{\varepsilon}} \colon \enspace {\underbrace{d(x_n,y) < \varepsilon}_{x_n \in U_{\varepsilon}(y)}}\]
+}
+
+\thm{}{
+Falls \((x_n)\) in \((M,d)\) konvergiert, so ist \(y = \lim_{n \to \infty} x_n\) eindeutig bestimmt.
+}
+
+\thm{}{
+Jede konvergente Folge ist beschränkt, d.h. die Menge der Folgenglieder ist beschränkt.
+}
+
+\dfn{\textsc{Cauchy}-Folge, Fundamentalfolge}{
+\((M,d)\) metrischer Raum\\
+\(x_n \in M\)\\
+\(n \in M\)
+\[(x_n) \in \CauchySeq(M,d) \quad \overset{\text{\tiny{def}}}{\Longleftrightarrow} \quad \forall_{\varepsilon > 0} \enspace \exists_{N_{\varepsilon} \in \NN} \enspace \forall_{n,m \geqslant N_{\varepsilon}} \colon \enspace d(x_n,x_m) < \varepsilon \]
+}
+
+\thm{}{
+Jede konvergente Folge ist eine Cauchy-Folge. Die Umkehrung gilt im Allgemeinen nicht.
+}
+
+\dfn{}{
+Ein metrischer Raum \((M,d)\) ist vollständig, g.d.w. jede \textsc{Cauchy}-Folge einen Grenzwert in \(M\) besitzt.
+}
+
+\section{\texorpdfstring{Zur Topologie im \(\RR^n\) und \(\CC^n\)}{Zur Topologie im Rⁿ und Cⁿ}}
+
+\dfn{Häufungspunkt einer Menge}{
+\((M,d)\) metrischer Raum\\
+Sei \(X \sbst M\). Wir nennen \(x_0 \in M\) Häufungspunkt von \(X\) g.d.w.\\
+\[\forall_{\varepsilon > 0} \colon \enspace U_{\varepsilon}(x_0) \cap \Le(X \backslash \{x_0\}\Ri) \neq \varnothing\]
+}
+
+\dfn{Isolierter Punkt}{
+Sei \(X \sbst M\). Wir nennen \(x_0 \in X\) einen isolierten Punkt von \(X\) g.d.w.
+\[\exists_{\varepsilon > 0} \colon \enspace U_{\varepsilon}(x_0) \cap \Le(X \backslash \{x_0\}\Ri) = \varnothing\]
+}
+
+\dfn{}{
+Wir nennen \(x_0 \in M\)\\
+\begin{itemize}
+    \item inneren Punkt von \(X\)\\[1ex]
+    \(\exists_{\varepsilon > 0} \colon \enspace U_{\varepsilon}(x_0) \sbst X\)\\
+    \item äußeren Punkt zu \(X\)\\[1ex]
+    \(\exists_{\varepsilon > 0} \colon \enspace U_{\varepsilon}(x_0) \sbst (M \backslash X)\)\\
+    \item Randpunkt von \(X\)\\[1ex]
+    \(\forall_{\varepsilon > 0} \colon \enspace \Le(U_{\varepsilon}(x_0) \cap X \neq \varnothing\Ri) \wedge \Le(U_{\varepsilon}(x_0) \cap (M \backslash X) \neq \varnothing\Ri)\)
+\end{itemize}
+
+\(\interior{X}\) Menge der inneren Punkte\\
+\(\exterior{X}\) Menge der äußeren Punkte\\
+\(\edge{X}\) Menge der Randpunkte
+}
+
+\dfn{}{
+Eine Menge \(X \sbst M\) heißt \underline{offen}, g.d.w.
+\[X = \interior{X}\]
+}
+
+\dfn{}{
+Eine Menge \(X \sbst M\) heißt \underline{abgeschlossen} g.d.w.
+\[X = \interior{X} \cup \edge X\]
+}
+
+\thm{}{
+\(X \sbst M\) ist offen in \((M,d)\), g.d.w. \(M \backslash X\) abgeschlossen in \((M,d)\) ist.
+}
+
+\section{\texorpdfstring{Die Exponentialfunktion -- Die Formel von \textsc{Euler}}{Die Exponentialfunktion - Die Formel von Euler}}
+Sei im Folgenden
+\[t_n(z) = 1 + \sum_{k=1}^{n} \frac{z^k}{k!} \quad, z \in \CC,\, n \in \NN\]
+
+\thm{}{
+Die Folge \((t_n(z))_{n\in\NN}\) ist für jedes \(z\in\CC\, n \to \infty\) konvergent.
+}
+
+\dfn{}{
+\(\exp\colon \CC \to \CC\)
+\[\exp(z) = \lim_{n \to \infty} t_n(z) = 1 + \sum_{k=1}^{\infty} \frac{z^k}{k!}\]
+Bzw. mit den Vereinbarungen\\
+\(0! = 1\), \(z^0 = 1\) (auch für \(z = 0\))
+\[\exp(z) = \sum_{k=0}^{\infty} \frac{z^k}{k!}\]
+}
+
+\thm{}{
+Für alle \(z, w \in \CC\) gilt:
+\[\exp(z+w) = \exp(z) \cdot \exp(w)\]
+}
+
+\thm{}{
+Für \(z \in \CC\) mit  \(z < 1\) gilt:
+\[\abs{\exp(z) - 1 - z} \leqslant \abs{z}^2\]
+bzw:
+\[\exp(z) = 1 + z + R(z)\]
+mit \(\abs{R(z)} \leqslant \abs{z}^2\) für \(\abs{z} < 1\)\\
+(\(R(z)\) ist der Rest von \(z\))
+}
+
+\dfn{}{
+\[\mathrm{e}^x = \exp(x) \qquad x \in \RR\]
+}
+
+\section{Grenzwerte von Funktionen}
+
+\dfn{\(\varepsilon\)-\(\delta\)-Definition}{
+\(\displaystyle y_0 = \lim_{x \to x_0} f(x)\) g.d.w.
+\[\forall_{\varepsilon > 0} \enspace \exists_{\delta > 0} \colon \enspace f\Big(X \cap \overset{\circ}{U_{\delta}}(x_0)\Big) \sbst U_{\varepsilon}(y_0)\]
+}
+
+\dfn{Folgendefinition}{
+\(\displaystyle y_0 = \lim_{x \to x_0} f(x)\) g.d.w. für \underline{jede} Folge \((x_n)_{n = 1}^{\infty}\) mit \(x_n \in X\backslash\{x_0\}\),
+\(x_n \overset{n \to \infty}{\longrightarrow} x_0\) gilt:
+\[y_0 = \lim_{n \to \infty} f(x_n)\]
+}
+
+\thm{}{Die letzten beiden Definitionen sind äquivalent zueinander.}
+
+\section{Stetigkeit}
+
+\dfn{}{
+\(f\) ist im Punkt \(x_0\) stetig, g.d.w.
+\begin{enumerate}
+    \item \(x_0 \in \isolated(X)\) oder
+    \item \(\lim_{x \to x_0} f(x) = f(x_0)\) für \(x_0 \in \accumulated(X)\)
+\end{enumerate}
+}
+
+\dfn{\(\varepsilon\)-\(\delta\)-Definition}{
+\(f \colon X \sbst M_1 \to M_2\) ist stetig in \(x_0 \in X \Leftrightarrow\)
+\[\forall_{\varepsilon > 0} \enspace \exists_{\delta > 0} \colon \enspace f(X \cap U_{\delta}(x_0)) \sbst U_{\varepsilon}(f(x_0))\]
+}
+
+\dfn{Folgendefinition}{
+\(f \colon X \sbst M_1 \to M_2\) stetig in \(x_0 \in X\)\\
+\(\Leftrightarrow\) für jede Folge \((x_n)_{n \in \NN}\) mit \(x_n \in X\), \(x_n \overset{n \to \infty}{\longrightarrow} x_0\) gilt:
+\[\lim_{n \to \infty} f(x_n) = f(x_0)\]
+}
+
+\dfn{}{
+\(f \colon X \sbst M_1 \to M_2\) ist stetig auf \(X\), wenn \(f\) in jedem Punkt \(x_0 \in X\) stetig ist.
+}
+
+\thm{}{
+Sei \(X = M_1\), dann ist \(f(X = M_1 \to M_2)\) stetig auf \(X = M_1\) g.d.w. das Urbild \(f^{-1}(U)\) von jeder in \(M_2\)
+offenen Menge \(U \sbst U_2\) in \(M_2\) ist.
+}
+
+\section{Stetige reelle Funktionen einer reellen Variablen}
+
+\thm{Satz von \textsc{Bolzano} und \textsc{Cauchy}}{
+\(f \colon [a, b] \overset{\text{stetig}}{\longrightarrow} \RR\)\\
+\(a < b,\, f(a) \cdot f(b) < 0\)
+\[\Rightarrow \quad \exists_{C \in {]{a,b}[}} \colon \enspace f(C) = 0\]
+}
+
+\dfn{Monotonie}{
+\begin{align*}
+    &f \!\uparrow \text{(monoton wachsend)} &x_1 < x_2 \Rightarrow f(x_1) \leqslant f(x_2)\\
+    &f \!\uparrow\uparrow \text{(streng monoton wachsend)} &x_1 < x_2 \Rightarrow f(x_1) < f(x_2)\\
+    &f \!\downarrow \text{(monoton fallend)} &x_1 < x_2 \Rightarrow f(x_1) \geqslant f(x_2)\\
+    &f \!\downarrow\downarrow \text{(streng monoton fallend)} &x_1 < x_2 \Rightarrow f(x_1) > f(x_2)\\
+\end{align*}
+}
+
+\section{Kompaktheit}
+
+\dfn{Häufungspunkt einer Folge}{
+Wir nennen \(y \in M\) Häufungspunkt einer Folge \((a_n)_{n\in\NN}\), falls eine Teilfolge \((a_j)_{j\in\NN}\) existiert,
+welche gegen \(y\) konvergiert.
+}
+
+\dfn{Kompaktheit}{
+\((M,\,d)\) metrischer Raum, \(K \sbst M\)\\
+\(K\) ist (folgen)kompakt, g.d.w. jede Folge aus \(K\) mindestens einen Häufungspunkt aus \(K\) enthält.
+}
+
+\thm{\textsc{Bolzano-Weierstraß}}{
+\((M,\,d) = \Le(\bbK^m,\,d_{|\cdot|}\Ri)\)\\
+Für eine Menge \(K \sbst \bbK^m\) gilt Kompaktheit, g.d.w. Beschränktheit und Abgeschlossenheit gelten.
+}
+
+\thm{}{
+Wenn \(K \sbst M_1\) kompakt \(f \colon K \sbst M_1 \to M_2\) auf \(K\) stetig ist, dann ist \(f(K)\) kompakt in \(M_2\)
+}
+
+\thm{\textsc{Weierstraß}}{
+\(f \colon K \sbst M_1 \to \RR\) stetig und \(K \sbst M_1\) kompakt\\
+\(\Rightarrow f\) ist beschränkt und nimmt einen Minimalwert und einen Maximalwert an.
+}
+
+\thm{}{
+\(f \colon K \sbst M_1 \overset{\text{stetig}}{\longrightarrow} M_2\)\\
+\(K \sbst M_1\) kompakt
+\[\implies \quad \forall_{\varepsilon > 0} \enspace \exists_{\delta = \delta_{\varepsilon} > 0} \enspace \forall_{x_0 \in K}\]
+}
+
+\chapter{Zur Differenzialrechnung für Funktionen einer Var.}
+
+\section{Differenzialquotient und Ableitung}
+
+\dfn{Differenzialquotient}{\[
+\varphi(f,x_0,h) = \frac{1}{h}\Le(f(x_0+h) - f(x_0)\Ri) \qquad h \neq 0
+\]}
+
+\dfn{}{
+\(f\) ist im Punkt \(x_0\) differenzierbar g.d.w.
+\[\lim_{h \to 0} \varphi(f,x_0,h) = F \in \mathbb{R}\] existiert.
+}
+
+\dfn{}{
+Wir nennen \(f\) in \(z_0\) differenzierbar g.d.w.
+\[\lim_{h \to 0} \varphi(f,z_0,h) = f\prime(z_0) \in \mathbb{C}\] existiert.
+}
+
+\section{\texorpdfstring{Die Landau-Symbole \(\mathscr{o}\) und \(\mathscr{O}\)}{Die Landau-Symbole o und O}}
+
+\dfn{\textsc{Landau}-Symbole}{
+\(f \overset{x \to x_0}{=} \mathscr{O}(g)\) g.d.w.
+\[\exists_{\delta>0} \enspace \exists_{C\in \mathbb{R}} \enspace \forall_{x \in U_{\delta}(x_0) \cap X} \colon \enspace \norm{f(x)} \leqslant C \cdot \abs{g(x)}\]
+\(f \overset{x \to x_0}{=} \mathscr{o}(g)\) g.d.w
+\[\forall_{\varepsilon>0} \enspace \exists_{\delta_{\varepsilon}>0} \enspace \forall_{x\in U_{\delta_{\varepsilon}}(x_0)\cap X} \colon \enspace \norm{f(x)} \leqslant \varepsilon \cdot \abs{g(x)}\]
+}
+
+\section{Regeln für das Rechnen mit Ableitungen}
+
+\thm{}{
+\(f,\, f_1,\, f_2,\, g\) differenzierbar im Punkt \(x_0 \in \interior(X)\)\\ %Möglicherweise unvollständig
+\(\Longleftrightarrow\) Dann existieren folgende Ableitungen in \(x_0\):
+\begin{enumerate}
+    \item \((f_1 \pm f_2)\prime(x_0) = f_1\prime(x_0) \pm f_2\prime(x_0)\)
+    \item \((\alpha \cdot f)\prime(x_0) = \alpha \cdot f\prime(x_0) \qquad \alpha \in \bbK\)
+    \item \((g \cdot f)\prime(x_0) = g\prime(x_0) \cdot f(x_0) + g(x_0) \cdot f\prime(x_0)\)
+\end{enumerate}
+}
+
+\thm{Kettenregel}{
+\((f \circ \psi)(y) = f\Le(\psi(y)\Ri)\)
+\[\eval{\odv[fun=false]{(f \circ \psi)}{y}}_{y=y_0}
+= \eval{\odv{\psi}{y}}_{y=y_0} \cdot \eval{\odv{f}{x}}_{x=x_0=\psi(y_0)}\]
+}
+
+\thm{Quotientenregel}{
+\(f,\, g \colon X \to \bbK;\, x_0 \in \interior(X)\)\\
+\(g(x) \neq 0\) für \(x \in X\)\\
+\(f\) und \(g\) sind in \(x_0\) differenzierbar
+\[\implies \quad \eval{\odv{}{x}\Le(\frac{f}{g}\Ri)}_{x=x_0} = \frac{f\prime(x_0) \cdot g(x_0) - f(x_0) \cdot g\prime(x_0)}{\Le(g(x_0)\Ri)^2}\]
+}
+
+\thm{Ableitung der Umkehrfunktion}{
+\(f \colon X \to Y\) bijektiv\\
+\(x_0 \in \interior(X)\)\\
+\(y_0 \in \interior(Y)\)\\
+\(f\) in \(x_0\) differenzierbar; \(f\prime(x_0) \neq 0\)\\
+\(f^{-1}\) ist in \(y_0 = f(x_0)\) stetig
+\[\implies \quad \eval{\odv{f^{-1}}{y}}_{y=y_0} = \frac{1}{\eval{\odv{f}{x}}_{x=x_0}}\]
+}
+
+\section{\texorpdfstring{Die Sätze von \textsc{Fermat, Rolle}: Die Formel von \textsc{Cauchy} und \textsc{Lagrange}}{Die Sätze von Fermat, Rolle: Die Formel von Cauchy und Lagrange}}
+
+\thm{\textsc{Fermat}}{
+\(f\colon[a,b] \to \RR\)\\
+\(a < c < b\), \(f\) ist in \(c\) differenzierbar\\
+\(\displaystyle f(c) = \max_{x \in [a,b]} f(x)\) oder\\
+\(\displaystyle f(c) = \min_{x \in [a,b]} f(x)\)
+\[\Rightarrow \quad f\prime(c) = 0\]
+}
+
+\thm{\textsc{Rolle}}{
+\(f\colon[a,b] \overset{\text{stetig}}{\longrightarrow} \RR\)\\
+\(a < b\)\\
+\(f\) differenzierbar in \(]a,b[\)\\
+\(f(a) = f(b)\)
+\[\Rightarrow \quad \exists_{c \in {]{a,b}[}} \colon \enspace f\prime(c) = 0\]
+}
+
+\thm{\textsc{Cauchy}}{ %Cauchy's Mean Value Theorem
+\(a < b\)\\
+\(f,g \colon [a,b] \to \RR\) stetig\\
+\(f,g\) auf \(]a,b[\) differenzierbar\\
+\(g\prime(x) \neq 0\) für \(]a,b[\)\\
+\[\implies \quad \exists_{c \in {]{a,b}[}} \colon \enspace \frac{f\prime(c)}{g\prime(c)} = \frac{f(b) - f(a)}{g(b) - g(a)}\] %REVIEWEN!!!
+}
+
+\thm{Mittelwertsatz der Differenzialrechnung (Formel von \textsc{Lagrange})}{
+\(f \colon {[{a,b}]} \overset{\text{stetig}}{\longrightarrow} \RR\), in \({]{a,b}[}\) differenzierbar
+\[\implies \quad \exists_{c \in {]{a,b}[}} \colon \enspace f\prime(c) = \frac{f(b) - f(a)}{b - a}\]
+}
+
+\section{Der Hauptsatz der Differenzialrechnung}
+
+\thm{Hauptsatz der Differenzialrechnung}{
+\(\bbK = \RR\) oder \(\bbK = \CC\), \(n \in \NN\)\\
+\(f \colon [a,b] \overset{\mathrm{stetig}}{\longrightarrow} \KK^n\) in \(\openint{a}{b}\) differenzierbar.
+\[\implies \quad \norm{f(b) - f(a)} \leqslant \sup_{x\in\openint{a}{b}} \norm{f\prime(x)} \cdot \abs{b-a}\]
+}
+
+\section{Höhere Ableitungen}
+
+\thm{Satz von \textsc{Leibniz}}{
+	\(f \colon X \to \KK^m, g \colon X \to \KK\)\\
+	\(X\) offen, \(x_0 \in X\), \(f\) und \(g\) sind in \(x_0\)\\ %HIER FEHLT WAS
+	Dann existiert:
+	\[(g \cdot f)^{(n)}(x_0) = \sum_{k=0}^{n} \begin{pmatrix}n\\k\end{pmatrix} \cdot g^{(n-k)}(x_0) \cdot f^{(k)}(x_0)\]
+}
+
+\section{\texorpdfstring{Der Satz von \textsc{Taylor}}{Der Satz von Taylor}}
+
+\thm{\textsc{Taylor}}{
+\(f \colon {]{a,b}[} = X \to \bbK^n\) bzw.\\
+\(f \colon X \sbst \CC \to \CC^n\)\\
+\(X\) offen, \(x_0 \in X\)\\
+Sei \(f\) im Punkt \(x_0\) \(m\)-fach differenzierbar, dann gilt
+\[f(x_0 + h) \overset{h \to 0}{=} {\underbrace{f(x_0) + \sum_{k=1}^{m} \frac{f^{(k)}(x_0)}{k!} h^k}_{=T_m(x_0,h)}} + o(h^m)\]
+}
+
+\section{Anwendungen: Monotonie und Extremwerte}
+
+\thm{}{
+\begin{enumerate}
+    \item \(f \!\uparrow \quad \Leftrightarrow f\prime(x) \geqslant 0\) für alle \(x \in {]{a,b}[}\)
+    \item \(f \!\uparrow\uparrow \quad \Leftrightarrow f\prime(x) > 0\) für alle \(x \in {]{a,b}[}\) und es gibt keine \(\alpha, \beta \in {]{a,b}[}\) mit \(\alpha < \beta\) und \(f\prime(x) = 0\) für alle \(x \in {]{\alpha,\beta}[}\)
+\end{enumerate}
+}
+
+\section{Konvexität und Konkavität}
+
+\dfn{}{
+\(f \colon \openint{a}{b} \to \RR\) ist \underline{konvex} g.d.w. für alle \(a < x_1 < x_2 < b\) und alle \(t \in [0,1]\) gilt mit \(x(t) = t \cdot x_1 + (1-t) \cdot x_2\)
+\[f(x(t)) \leqslant t \cdot f(x_1) + (1-t) \cdot f(x_2)\]
+\(f\) ist \underline{konkav} g.d.w. \(-f\) konvex ist.
+}
+
+\thm{}{
+Ist \(f \colon \openint{a}{b}\) konvex (bzw. konkav), dann ist \(f\) stetig.
+}
+
+\thm{}{
+Sei \(f \colon \openint{a}{b} \to \RR\) differenzierbar
+\begin{enumerate}
+    \item \(f\) ist konvex \quad \(\Leftrightarrow \quad f\prime \uparrow\) auf \(\openint{a}{b}\)
+    \item \(f\) ist konkav \quad \(\Leftrightarrow \quad f\prime \downarrow\) auf \(\openint{a}{b}\)
+\end{enumerate}
+}
+
+\thm{}{
+Sei \(f \colon \openint{a}{b} \to \RR\) 2-fach differenzierbar in \(\openint{a}{b}\)
+\begin{enumerate}
+    \item \(f\) ist konvex \quad \(\Leftrightarrow \quad f\dprime(x) \geqslant 0\) für alle \(x \in \openint{a}{b}\)
+    \item \(f\) ist konkav \quad \(\Leftrightarrow \quad f\dprime(x) \leqslant 0\) für alle \(x \in \openint{a}{b}\)
+\end{enumerate}
+}
+
+\thm{}{
+\(f \colon \openint{a}{b}\) 2-fach differenzierbar in \(c \in \openint{a}{b}\) in \(c\) liegt Wendepunkt vor
+\[\implies \quad f\dprime(c) = 0\]
+}
+
+\section{\texorpdfstring{Unbestimmtheiten vom Typ \(0/0\) bzw. \(\infty / \infty\)}{Unbestimmtheiten vom Typ 0/0 bzw. ∞/∞}}
+
+
+\thm{\textsc{Bernoulli, l'Hospital}}{
+\(f,g \colon {]{a,b}[} \to \RR\) in \(\RR\) differenzierbar\\
+\(g(x) \neq 0\), \(g\prime(x) \neq 0\) für \(x \in {]{a,b}[}\)\\
+\(\displaystyle \lim_{x \to a} f(x) = \lim_{x \to a} g(x) = 0\)\\
+Es existiere \(\displaystyle \lim_{x \to a} \frac{f\prime(x)}{g\prime(x)} = A \in \RR\)
+\[\implies \quad \lim_{x \to a} \frac{f(x)}{g(x)} = A\]
+}
+
+\thm{Unbestimmtheiten vom Typ \(\frac{\infty}{\infty}\)}{
+\(f,g \colon {]{a,b}[} \overset{\text{db.}}{\longrightarrow} \RR\)\\
+\(g\prime(x) \neq 0\)\\
+\(\displaystyle \lim_{x \to a} f(x) = \lim_{x \to a} g(x) = \infty\)\\
+Es existiere \(\displaystyle \lim_{x \to a} \frac{f\prime(x)}{g\prime(x)} = A \in \RR\)
+\[\implies \quad \lim_{x \to a} \frac{f(x)}{g(x)} = A\]
+}
+
+\chapter{Integralrechnung}
+
+\section{\texorpdfstring{Das \textsc{Riemann}-Integral}{Das Riemann-Integral}}
+
+\dfn{\textsc{Riemann}-Integral}{
+Wir nennen \(f\colon [a,b] \to \RR\) Riemann-integrierbar, falls ein \(I \in \RR\) existiert, sodass
+\[\lim_{n \to \infty} \sum \Le(f; \delta^{(n)}; \Xi^{(n)}\Ri) = I\]
+Man schreibt
+\[I = \int_{a}^{b} f(x) \d x\]
+
+}
+
+\thm{Struktur des Raumes R[a,b]}{
+\(f,g \in R[a,b]\)\\
+\([c,d] \sbst [a,b]\)\\
+\(\alpha \in \RR\)
+\begin{enumerate}[label=(\arabic*)]
+	\item \(f + g \in R[a,b]\)
+	\item \(\alpha \cdot f \in R[a,b]\)
+	\item \(\abs{f}_{[c,d]} \in R[a,b]\)
+	\item \(\eval{f}_{[c,d]} \in R[c,d]\)
+	\item \(f \cdot g \in R[a,b]\)
+\end{enumerate}
+}
+
+\thm{}{
+Ändert man \(f \in R[a,b]\) in endlich vielen Punkten ab, dann ist die neue Funktion ebenfalls Riemann-integrierbar.
+}
+
+\dfn{Erweiterung}{
+\(f \colon \{a\} \to \RR\)
+\[\int_{a}^{a} f(x) \d x \eqdef 0\]
+}
+
+\dfn{Erweiterung (gerichtetes Integral)}{
+Sei \(a \leqslant b\)
+\[\int_{a}^{b} f(x) \d x \eqdef -\int_{b}^{a} f(x) \d x\]
+}
+
+\section{\texorpdfstring{Wichtige Eigenschaften des \textsc{Riemann}-Integrals}{Wichtige Eigenschaften des Riemann-Integrals}}
+
+\dfn{\textsc{Riemann}-Integral für komplexwertige Funktionen}{
+\(f \colon [a,b] \to \CC\)\\
+\(f(x) = f_R(x) + \mathrm{i} f_I(x)\)\\
+mit\\
+\(f_R(x) = \Re{f(x)}\)\\
+\(f_I(x) = \Im{f(x)}\)\\% hier noch Leerzeile einfügen
+\(f \in R[a,b]\)
+\[\Leftrightarrow \quad f_R \in R[a,b] \wedge f_I \in R[a,b]\]
+und es gilt:
+\[\int_{a}^{b} f(x) \d x = \int_{a}^{b} f_R(x) \d x + \mathrm{i} \int_{a}^{b} f_I(x) \d x\]
+}
+
+\section{\texorpdfstring{Die Formel von \textsc{Newton} und \textsc{Leibniz} -- Die Stammfunktion}{Die Formel von Newton und Leibniz - Die Stammfunktion}}
+
+\thm{\textsc{Newton, Leibniz}}{
+\(F \colon [a,b] \to \RR, \enspace a < b\)
+\begin{enumerate}[label=(\arabic*)]
+	\item \(F\) stetig auf \([a,b]\)
+	\item \(F\) differenzierbar auf \(\openint{a}{b}\)\\
+		  \(f \colon [a,b] \to \RR\)
+	\item \(f(x) = \begin{cases} 0 & x = a \, \vee \, x = b \\ F\prime(x) & x \in \openint{a}{b}\end{cases}\)
+\end{enumerate}
+Es sei \(f \in R[a,b]\)
+Dann gilt
+\[
+	\int_{a}^{b} f(x) \d x = F(b) - F(a) = \eval{F(x)}_a^b
+\]
+}
+
+\dfn{}{
+\(F \colon [a,b] \to \RR\)\\
+\(f \colon [a,b] \to \RR\)\\
+Wir nennen \(F\) Stammfunktion von \(f\), falls (1), (2) erfüllt sind und \((3)'\) \(f(x) = F'(x), \enspace x \in [a,b]\)
+}
+
+\thm{Hauptsatz der Differenzial- und Integralrechnung}{
+Wenn \(f \in R[a,b]\) eine Stammfunktion \(F\) besitzt, dann gilt
+\[
+	\int_{a}^{b} f(x) \d x = F(b) - F(a)
+\]
+}
+
+\thm{\textsc{Darboux}}{
+Sei \(F \colon [a,b] \to \RR\) differenzierbar in \(\openint{a}{b}\) und \(f(x) = F\prime(x)\) für \(x \in \openint{a}{b}\). Dann besitzt \(f\) keine Sprungstelle in \(\openint{a}{b}\)
+}
+
+\thm{Existenz einer Stammfunktion}{
+\(f \colon [a,b] \to \RR\)\\
+Sei \(f\) in \(\openint{a}{b}\) stetig und auf \([a,b]\) beschränkt.\\
+Dann ist \((y \in [a,b])\)
+\[
+	F(y) = F(a) + \int_{a}^{y} f(x) \d x
+\]
+eine Stammfunktion von \(f\) auf \([a,b]\)
+}
+
+\section{Partielle Integration, Substitution der Integrationsvariablen}
+
+\section{Zur Integration rationaler Funktionen}
+
+\section{Die Mittelwertsätze der Integralrechnung}
+
+\thm{Erster Mittelwertsatz}{
+\(f,g \colon [a,b] \to \RR\)\\
+\(f,g\) stetig auf \([a,b], \enspace g(x) \geqslant 0\) für \(x \in [a,b]\)
+\[
+	\implies \quad \exists_{\xi \in [a,b]} \colon \enspace \int_{a}^{b} f(x) \cdot g(x) \d x \enspace = \enspace f(\xi) \cdot \int_{a}^{b} g(x) \d x
+\]
+}
+
+%\thm{Zweiter Mittelwertsatz}{
+%\(f,g \colon [a,b] \to \RR\)\\
+%\(g \in R[a,b]\)
+%\begin{enumerate}[label=(\arabic*)]
+%	\item \(f \!\downarrow\) und \(f(x) \geqslant 0, \enspace x \in [a,b]\)\\
+%		 \[ \begin{aligned}&\implies \quad &&\exists_{\xi \in [a,b]} \colon \enspace \int_{a}^{b} f(x) \cdot g(x) \d x \enspace = \enspace f(a) \cdot \int_{a}^{\xi} g(x) \d x\end{aligned}\]
+%	\item \(f \!\uparrow\) und \(f(x) \leqslant 0, \enspace x \in [a,b]\)\\
+%		  \[\begin{aligned}&\implies \quad &&\exists_{\xi \in [a,b]} \colon \int_{a}^{b} f(x) \cdot g(x) \d x \enspace = \enspace f(b) \cdot \int_{\xi}^{b} g(x) \d x\end{aligned}\]
+%	\item \(f\) monoton
+%		  \[\begin{aligned}&\implies \quad &&\exists_{\xi \in [a,b]} \colon \enspace \int_{a}^{b} f(x) \cdot g(x) \d x \enspace = \enspace f(a) \cdot \int_{a}^{\xi} g(x) \d x + f(b) \cdot \int_{\xi}^{b} g(x) \d x\end{aligned}\]
+%\end{enumerate} %to do: Implikationspfeile alignen
+%}
+
+\thm{Zweiter Mittelwertsatz}{
+\(f,g \colon [a,b] \to \mathbb{R}\)\\
+\(g \in R[a,b]\)
+
+\begin{enumerate}[label=(\arabic*)]
+	\item \(f \!\downarrow\) und \(f(x) \geqslant 0, \enspace x \in [a,b]\)\\[1ex]
+	\makebox[0pt][l]{\phantom{XXX}}% zum horizontalen Ausrichten
+	\hspace{3.7em}%
+	\(\displaystyle\implies \quad \exists_{\xi \in [a,b]} \colon \int_{a}^{b} f(x) \cdot g(x) \,\mathrm{d}x = f(a) \cdot \int_{a}^{\xi} g(x) \,\mathrm{d}x\)
+
+	\item \(f \!\uparrow\) und \(f(x) \leqslant 0, \enspace x \in [a,b]\)\\[1ex]
+	\makebox[0pt][l]{\phantom{XXX}}%
+	\hspace{3.7em}%
+	\(\displaystyle\implies \quad \exists_{\xi \in [a,b]} \colon \int_{a}^{b} f(x) \cdot g(x) \,\mathrm{d}x = f(b) \cdot \int_{\xi}^{b} g(x) \,\mathrm{d}x\)
+
+	\item \(f\) monoton\\[1ex]
+	\makebox[0pt][l]{\phantom{XXX}}%
+	\hspace{3.7em}%
+	\(\displaystyle\implies \quad \exists_{\xi \in [a,b]} \colon \int_{a}^{b} f(x) \cdot g(x) \,\mathrm{d}x = f(a) \cdot \int_{a}^{\xi} g(x) \,\mathrm{d}x + f(b) \cdot \int_{\xi}^{b} g(x) \,\mathrm{d}x\)
+\end{enumerate}
+}
+
+\section{\texorpdfstring{Das Restglied in der Formel von \textsc{Taylor}}{Das Restglied in der Formel von Taylor}}
+
+\thm{}{
+Sei \(f\) in \(I_h(x_0) \, (m+1)\)-fach differenzierbar und \(f^{(m+1)}\) sei stetig auf \(I_h(x_0)\)
+\[
+	\implies \quad r_m(x_0,h) = \frac{h^{m+1}}{m!} \cdot \int_{0}^{1} f^{(m+1)}(x_0 + th)(1-t)^m \d t
+\]
+}
+
+\section{Numerische Verfahren der Integration}
+
+\thm{}{
+Sei \(f \colon [a,b] \to \RR\)
+\begin{itemize}
+	\item in \(\openint{a}{b} \enspace (n+1)\)-fach differenzierbar
+	\item \(f,f\prime,\hdots,f^{(n)},f^{(n+1)}\) stetig und stetig auf \([a,b]\) fortsetzbar.
+\end{itemize}
+Dann existiert zu jedem \(x \in [a,b]\) (mindestens) einen Punkt \(\xi \in [a,b]\) mit
+\[f(x)-P_n(x) = \frac{f^{(n+1)}(\xi_x)}{(n+1)!}\cdot (x-x_0) \cdot \hdots \cdot (x-x_n)\]
+}
+
+\section{Einige Anwendungen der Differenzial- und Integralrechnung}
+
+\dfnc{}{
+\(\varphi\) erzeugt eine Kurve der Klasse \(C^p, p \in \NN\), falls zudem
+\begin{enumerate}[label=(\arabic*)]
+	\item \(\varphi\) \(p\)-fach stetig differenzierbar, Ableitungen stetig in Randpunkt fortsetzbar.
+	\item \(\dot{\varphi}(t) \neq 0\) für \(t \in \openint{a}{b}\)\\
+	      \[\exists \lim_{t \to a,b} \dot{\varphi} \neq 0\]
+\end{enumerate}
+Wobei \(\displaystyle \dot{\varphi}(t) = \odv{\varphi(t)}{t}\)
+}
+
+\dfn{}{
+\(\varphi\) erzeugt eine rektifizierbare Kurve der Länge \(L\) g.d.w.
+\[\sup_{\delta} l(\delta) = L < \infty.\]
+}
+
+\thm{}{
+Die Abbildung \(\varphi \colon [a,b] \to \RR^n\) erzeugt eine Kurve der Klasse \(C^1\). Dann
+\begin{enumerate}[label=(\arabic*)]
+	\item erzeugt \(\varphi\) eine rektifizierbare Kurve.
+	\item \(\displaystyle L = \int_{a}^{b} \norm{\dot{\varphi}(t)} \d t\)
+\end{enumerate}
+}
+
+\dfn{}{
+\(K(s) = \norm{\kappa(s)}\) Krümmung\\
+\(R(s) = \frac{1}{K(s)}\) Krümmungsradius
+}
+
+\section{Flächen, Volumina}
+
+\dfn{}{
+Wir nennen \(\Omega\) quadrierbar, falls \(S_*(\Omega) = S^*(\Omega)\) und setzen \(A(\Omega) = S_*(\Omega) = S^*(\Omega)\)
+}
+
+\thm{}{
+\(f \colon [a,b] \to \RR\) stetig\\
+\(a \leqslant b, f(x) \geqslant 0\) für \(x \in [a,b]\)\\
+\(\Omega = \Le\{(x,y) \in \RR^2 \vert (a \leqslant x \leqslant b) \wedge (0 \leqslant y \leqslant f(x))\Ri\}\)\\
+\(\implies \Omega\) quadrierbar
+\[A(\Omega) = \int_{a}^{b} f(x) \d x\]
+}
+
+\thm{}{
+\(0 \leqslant \varphi \leqslant \beta \leqslant 2\pi\)\\
+\((r,\varphi)\) Polarkoordinaten in \(\RR^2\)\\
+\(f(\varphi) \geqslant 0\) für \(\varphi \in [\alpha,\beta]\)\\
+\(\Omega = \Le\{(r,\varphi) \vert 0 \leqslant r \leqslant f(\varphi) \wedge \varphi \in [\alpha,\beta]\Ri\}\)\\
+\(f\colon [\alpha,\beta] \to \RR\) stetig
+\[\implies \quad A(\Omega) = \frac{1}{2} \int_{\alpha}^{\beta} \Le(f(\varphi)\Ri)^2 \d \varphi\]
+}
+
+\chapter{Lineare Algebra}
+
+\section{\texorpdfstring{Matrizen -- Grundlagen}{Matrizen - Grundlagen}}
+
+\dfn{}{
+Eine Matrix vom Typ \((m,n)\) ist ein rechteckiges Schema von Zahlen aus \(\KK\), wobei \(\KK = \RR\) oder \(\KK = \CC\).
+\begin{align*}
+	A &=
+	\begin{pmatrix}
+	a_{11} & \cdots & a_{1n}\\
+	\vdots & \ddots & \vdots\\
+	a_{m1} & \cdots & a_{mn}
+	\end{pmatrix} \quad m,n \in \NN\\[2ex]
+	&= 	\Le(a_{ij}\Ri)_{j = 1,\ldots,m}^{i = 1,\ldots,n}
+\end{align*}
+}
+
+\section{Quadratische Matrizen}
+
+\dfn{}{
+\begin{align*}
+	[A,B] &= AB - BA \quad\text{ (Kommutator)}\\
+	\{A,B\} &= AB + BA \quad\text{ (Antikommutator)}
+\end{align*}
+Wir sagen, dass \(A\) und \(B\) kommutieren \(\Leftrightarrow [A,B] = \mathbb{0}_n \Leftrightarrow AB = BA\).\\
+\(A\) und \(B\) antikommutieren \(\Leftrightarrow \{A,B\} = \mathbb{0}_n\)
+}
+
+\thm{}{
+Sei \(A \in M^n(\KK)\), sodass \(A\) mit jedem \(B \in M^n(\KK)\) kommutiert. Dann ist \(A = \alpha \cdot \mathbb{1}_n\) für gewisses \(\alpha \in \KK\).
+}
+
+\dfn{Spur einer quadratischen Matrix}{
+\[\mathrm{Sp}\,A = \mathrm{sp}\,A = \trace{A} = \mathrm{tr}\,A = \sum_{i=1}^{n} a_{ii}\]
+}
+
+\thm{}{
+\(A \in M^{m,n}, B \in M^{n,m}\)\\
+Dann ist \(AB \in M^m, BA \in M^n\) und \(\trace(AB) = \trace(BA)\).
+}
+
+\thm{}{
+Für \(\sigma,\tau \in S_n\) gilt immer
+\[\veps(\sigma\tau) = \veps(\sigma) \cdot \veps(\tau)\]
+}
+
+\section{\texorpdfstring{\(\RR^n\) bzw. \(\CC^n\) als Raum der Spaltenvektoren}{Rⁿ bzw. Cⁿ als Raum der Spaltenvektoren}}
+
+\section{Permutationen}
+
+\section{Determinanten}
+
+\dfn{}{
+\[\det A = \sum_{\sigma \in S_n} \veps(\sigma) \cdot (a)_{\sigma} = \sum_K \veps(K)a_{1k_1} \cdot \hdots \cdot a_{nk_n}\]
+}
+
+\thm{Entwicklungssatz (\textsc{Laplace})}{
+\(A = \Le(a_{ij}\Ri)_{i=1,\ldots,n}^{j=1,\ldots,n}\)\\
+\(\begin{pmatrix}
+	a_{11} & \dots & a_{1k} & \dots & a_{1n}\\
+	\vdots &        & \vdots &        & \vdots\\
+	a_{l1} & \dots & a_{lk} & \dots & a_{ln}\\
+	\vdots &        & \vdots &        & \vdots\\
+	a_{n1} & \dots & a_{nk} & \dots & a_{nn}
+\end{pmatrix}\)
+\begin{align*}
+	\det A &= \sum_{j=1}^{n}(-1)^{l+j} \cdot a_{lj} \cdot M_{lj}\\
+	&= \sum_{i=1}^{n}(-1)^{i+k} \cdot a_{ik} \cdot M_{ik}
+\end{align*}
+}
+
+\section{Inverse Matrizen}
+
+\dfn{}{
+Sei \(A \in M^{m,n}\).\\
+Man nennt \(B_{\text{L}} \in M^{n,m}\) linksinvers zu \(A\)
+\[\Leftrightarrow \quad B_{\text{L}} \cdot A = \mathbb{1}_n \in M^{n,n}.\]
+Man nennt \(B_{\text{R}} \in M^{n,m}\) rechtsinvers zu \(A\)
+\[\Leftrightarrow \quad A \cdot B_{\text{R}} = \mathbb{1}_m \in M^{m,m}.\]
+}
+\thm{}{
+	Sei \(A \in M^n\), also \(m=n\). Dann sind folgende Aussagen äquivalent:
+\begin{enumerate}[label=(\arabic*)]
+	\item \(A\) besitzt eine linksinverse Matrix \(B_{\text{L}}\).
+	\item \(A\) besitzt eine rechtsinverse Matrix \(B_{\text{R}}\).
+	\item \(A\) besitzt eine inverse Matrix \(A^{-1}\).
+	\item \(\det{A} \neq 0\).
+\end{enumerate}
+}
+
+\dfn{}{
+Man nennt \(A \in M^n\)
+\begin{itemize}
+	\item regulär, falls \(\det{A} \neq 0\)
+	\item singulär, falls \(\det{A} = 0\)
+\end{itemize}
+\(A \in M^n\) invertierbar \(\Leftrightarrow\) regulär.
+}
+
+\thm{}{
+Sei \(A \in M^n\) regulär.\\
+Dann besitzt (*) für jede beliebige rechte Seite genau eine Lösung.
+\[\mathbb{x} =
+\begin{pmatrix}
+	x_1\\\vdots\\x_n
+\end{pmatrix} = A^{-1} \cdot \mathbb{f} = A^{-1} \cdot
+\begin{pmatrix}
+	f_1\\\vdots\\f_n
+\end{pmatrix}\]
+}
+
+\section{Der Rang einer Matrix}
+
+\dfn{}{
+\(A \in M^{m,n}\) besitzt den Rang \(r = r(A) \geqslant 1\), falls es eine Minor \(\tilde{A}\) der Ordnung \(r\) gibt, mit \(\det{\tilde{A}} \neq 0\), und falls für alle Minoren der Ordnungen \(> r\) deren Determinanten gleich null sind.
+}
+
+\dfn{}{
+Ein System von Spalten(vektoren) \(\mathbb{x},\hdots,\mathbb{x}_k\) nennt man linear unabhängig, falls
+\[\alpha_1 \mathbb{x}_1 + \hdots + \alpha_k \mathbb{x}_k = \mathbb{0}_n \enspace\Leftrightarrow\enspace \alpha_1 = \hdots = \alpha_k = 0\]
+Analog: Zeilen(vektoren)\\
+Sonst: linear abhängig
+}
+
+\dfn{}{
+Der Spaltenrang \(r_s(A)\) von \(A \in M^{m,n}\) ist die größtmögliche Anzahl linear unabhängiger Spalten von \(A\).
+}
+
+\dfn{}{
+Der Zeilenrang \(r_z(A)\) von \(A \in M^{m,n}\) ist die größtmögliche Anzahl linear unabhängiger Zeilen von \(A\).
+}
+
+\thm{Satz vom Rang}{\[r(A) = r_z(A) = r_s(A)\]}
+
+\dfn{}{Die Dimension eines Vektorraums ist die größtmögliche Anzahl linear unabhängiger Vektoren aus diesem Raum.}
+
+\dfn{Lineare Hülle}{
+\[\Le\{\alpha_1 f_1 + \hdots + \alpha_k f_k \colon \alpha_1,\hdots,\alpha_k \in \KK\Ri\} = V\{f_1,\hdots,f_k\} = \Vektor_{j=1}^k \{f_x\}\]
+lineare Hülle des Systems \(\{f_1,\hdots,f_k\}\)
+}
+
+\thm{}{
+\(\{f_1,\hdots,f_x\} \sbst E\) linear unabhängig\\
+\(k \in \NN, \Vektor_{j=1}^k f_j = E\)
+\[\implies \quad \dim{E} = k\]
+}
+
+\thm{}{
+\(\dim{E} = k\in\NN\)\\
+\(\{f_1,\hdots,f_k\}\) linear unabhängig\\
+\[\implies \quad E = V\{f_1,\hdots,f_k\}\]
+}
+
+\dfn{}{
+\(\{f_1,\hdots,f_k\}\) ist eine Basis in \(E\)
+\[\Leftrightarrow \quad
+\begin{cases}
+	\{f_1,\hdots,f_k\} \text{ linear unabhängig }\\
+	\Vektor_{j=1}^k\{f_j\} = E \text{ vollständig }
+\end{cases}\]
+}
+
+\dfn{}{Man nennt \(L \sbst E\) einen Unterraum von \(E\), falls
+\[\begin{rcases}
+	\forall f,g \in L\\
+	\forall \alpha, \beta \in \KK
+\end{rcases} \implies \alpha f + \beta g \in L\]
+}
+
+
+\thm{Dimensionssatz}{
+\(A \in M^{m,n}\)\\
+\[\dim{\core(A)} = \dim{W(A)} = \dim{\core(A)} + r(A) = n\]
+}
+
+\thm{}{
+\(A \cdot \mathbb{x} = \mathbb{f}\) ist für jedes \(\mathbb{f} \in \KK^n\) lösbar, genau dann wenn
+\[r(A) = m.\]
+}
+
+\section{Determinante}
+
+\section{Das Spektrum. Eigenvektoren. Resolvente.}
+
+\dfn{Charakteristisches Polynom}{
+\[d_A(\lambda) = \det(A - \lambda\id)\]
+}
+
+\dfn{}{
+\(\mu_1, \hdots, \mu_k\) Eigenwerte von \(A\)\\
+\(\tau_1, \hdots, \tau_k\) Algebraische Vielfachheit
+}
+
+\dfn{}{
+\(\sigma(A) = \{\mu_1, \hdots, \mu_k\} \sbst \CC\) Spektrum von \(A\).
+}
+
+\dfn{}{
+\(\varkappa = \dim{E_{\mu}}\) geometrische Vielfachheit des Eigenwerts \(\mu\).
+}
+
+\dfn{}{
+\(\rho(A) = \CC \backslash \sigma(A)\) Resolventenmenge.
+\begin{align*}
+	\mu \in \rho(A) &\Leftrightarrow d_A(\lambda) = \det(A - \mu\id) \neq 0\\
+	&\Leftrightarrow A - \lambda\id \text{ invertierbar}\\
+	&\Leftrightarrow \text{ Es existiert } (A - \mu\id)^{-1}
+\end{align*}
+}
+
+\dfn{}{
+\(\mu \in \rho(A)\)\\
+\[\Gamma_{\mu}(A) = (A - \mu\id)^{-1}\]
+Resolvente von A im Punkt \(\mu \in \rho(A)\).
+\[\Gamma_{\mu}(A) \colon \rho(A) = \CC \backslash \sigma(A) \to M^{n,n}\]
+}
+
+\dfn{}{
+Für \(A \in M^s\) und \(p(z) = c_n z^n  + \hdots + c_1 z + c_0 \qquad c_k,z \in \CC\)\\
+sei\\
+\[p(A) = c_n A^n  + \hdots + c_1 A + c_0 \id\]
+\[p \colon M^s \to M^s\]
+}
+
+%Hier fehlen die Sachen aus VL21
+
+\dfn{}{
+Eine Matrix \(B \in M^{n,n}\) heißt diagonalisierbar, genau dann, wenn sie zu einer Diagonalmatrix ähnlich ist. Das heißt, es gibt \( A = \diag{a_1, \hdots, a_n}\) und es gibt \(X \in M^{n,n}, \det{X} \neq 0\), sodass
+\[B = X^{-1}AX\]
+}
+
+\dfn{}{
+\(f \colon \sigma(A) \to \CC\)
+\[f(A) \coloneq \diag{f(\lambda_1), \hdots, f(\lambda_n)}\]
+}
+
+\dfn{}{
+\(f \colon \sigma(B) \to \CC\)
+\begin{align*}
+	B &= X^{-1} \cdot \diag{\lambda_1, \hdots, \lambda_n}X\\
+	f(B) &= X^{-1} \cdot \diag{f(\lambda_1), \hdots, f(\lambda_n)}X
+\end{align*}
+}
+
+\section{Ähnlichkeit von Matrizen}
+
+\section{Orthogonale und unitäre Matrizen}
+
+\dfn{}{\[\mathbb{x} \perp\ \mathbb{y} \Leftrightarrow \langle x, y \rangle = 0 \text{ orthogonal}\]}
+
+\dfn{}{Ein Vektor \(\mathbb{x} \in \KK\) heißt normiert, falls \(\norm{\mathbb{x}} = 1\).}
+
+\dfn{}{
+Ein System von Vektoren \(\{\mathbb{y}_1, \hdots, \mathbb{y}_k\}\) heißt orthonormiert (ON), genau dann, wenn
+\[\langle \mathbb{y}_j, \mathbb{y}_l \rangle = \updelta_{jl} \qquad j,l = 1, \hdots, k\]
+ONS System von orthonormalen Vektoren.\\
+Bildet ein ONS eine Basis im \(\KK^n\), spricht man von einer Orthonormalbasis (ONB).
+}
+
+\section{Symmetrische und Hermitesche Matrizen}
+
+\dfn{}{
+\(\KK = \RR\)\\
+Wir nennen \(A \in M^n\) symmetrisch, genau dann, wenn \(A = A^{\mathsf{T}}\).
+}
+
+\dfn{}{
+\(\KK = \CC\)\\
+Wir nennen \(A \in M^n\) hermitsch (bzw. selbstadjungiert), genau dann, wenn \(A = A^*\).
+}
+
+\thm{}{
+Sei \(A = A^{\mathsf{T}}\) (falls \(\KK = \RR\)) bzw. \(A = A^*\) (falls \(\KK = \CC\)). Es seien \(\lambda_1, \lambda_2\) Eigenwerte von \(A\), und \(\mathbb{x}_1, \mathbb{x}_2\) zugehörige Eigenvektoren. Aus \(\lambda_1 \neq \lambda_2\) folgt dann
+\[\langle\mathbb{x}_1, \mathbb{x}_2\rangle = 0, \text{ d.h. }\mathbb{x}_1 \perp \mathbb{x}_2.\]
+}
+
+\dfn{}{
+\(\KK = \RR\)\\
+Man nennt \(A \in M^n(\RR)\) orthogonal diagonalisierbar, genau dann, wenn eine orthogonale Matrix \(Y \in M^n(\RR)\) existiert, sodass
+\[Y^{\mathsf{T}} = Y^{-1}AY = \mathrm{diag}\Le\{\lambda_1, \hdots, \lambda_2\Ri\}.\]
+}
+
+\dfn{}{
+\(\KK = \CC\)\\
+Man nennt \(A \in M^n(\CC)\) unitär diagonalisierbar, genau dann, wenn eine unitäre Matrix \(Y \in M^n(\CC)\) existiert, sodass
+\[Y^* = Y^{-1}AY = \mathrm{diag}\Le\{\lambda_1, \hdots, \lambda_2\Ri\}.\]
+}
+
+\thm{}{
+\(\KK = \RR\)\\
+Jede symmetrische Matrix \(A \in M^n(\RR)\) besitzt eine ONB aus Eigenwerten im \(\RR^n\) und ist somit orthogonal diagonalisierbar.\\
+\(\KK = \CC\)\\
+Jede hermitsche Matrix \(A \in M^n(\CC)\) besitzt eine ONB aus Eigenwerten im \(\CC^n\) und ist somit unitär diagonalisierbar.
+}
+
+\thm{Spektralsatz für unitäre Matrizen}{
+Unitäre Matrizen sind unitär diagonalisierbar.
+}
+
+\section{Wechsel des Koordinatensystems -- Basiswechsel}
+
+\thm{}{
+\(A \in M^n\) ist unitär diagonalisierbar, falls
+\[AA^* = A^*A.\]
+Solche Matrizen nennt man normal.
+}
+
+\dfn{}{
+\[A \in M^{n,n}(\CC) \text{ normal } \Leftrightarrow AA^* = A^*A.\]
+}
+
+\thm{}{
+\(A \in M^n\) ist genau dann unitär diagonalisierbar, wenn \(A\) normal ist.
+}
+
+%Anmerkung: Weirde Wiederholungen
+
+\thm{}{
+Zwei normale Matrizen \(A\) und \(B\) kommutieren genau dann, wenn sie eine gemeinsame ONB von Eigenvektoren besitzen.
+}
+
+\section{Direkte und orthogonale Summen von Unterräumen}
+
+\dfn{}{
+\[F + G \coloneq \Le\{h \in V \colon h = f + g, \enspace f \in F, \enspace g \in G\Ri\}\]
+\(F + G\) ist ein Unterraum:
+\[h_1 = f_1 + g_1, \enspace h_2 = f_2 + g_2\]
+\[\implies \quad h = \alpha h_1 + \beta h_2 = {\underbrace{\Le(\alpha f_1 + \beta f_2\Ri)}_{f \in F}} + {\underbrace{\Le(\alpha g_1 + \beta g_2\Ri)}_{g \in G}}\]
+}
+
+\dfn{}{
+Wir nennen \(H = F + G\) eine direkte Summe von Unterräumen, wenn für jedes \(h \in H\) die Darstellung \(h = f + g, \enspace f \in F, \enspace g \in G\) eindeutig ist:
+\[H = F \mathrel{\dot{+}} G\]
+} % Problem mit dem Dot über Plus
+
+\thm{}{
+\(F, G \sbst V\) Unterräume\\
+\(H = F + G\) (im Allgemeinen nicht direkt)
+\[\implies \quad \dim(F + G) + \dim(F \cap G) = \dim F + \dim G\]
+}
+
+\dfn{}{
+\[H = F_1 + \hdots + F_m = \Le\{h \in V \colon h = f_1 + \hdots + f_m, \enspace f_j \in F_j, \enspace j = 1,\hdots,m\Ri\}\]
+Falls die Zerlegung \(h = f_1 + \hdots + f_m\) für jedes \(h \in H\) eindeutig ist, dann nennt man die Summe direkt.
+\[H = F_1 \mathrel{\dot{+}} F_2 \mathrel{\dot{+}} \hdots \mathrel{\dot{+}} F_m\]
+}
+
+\dfn{}{
+\(F \perp G \Leftrightarrow f \perp g \quad \forall f \in F, g \in G\)\\
+Sind \(F, G\) Unterräume von \(V\) und \(F \perp G\)
+\[H = F + G = F \oplus G = F \mathrel{\dot{+}} G\]
+}
+
+\thm{}{
+Jede Matrix \(A \in M^n\) mit einem Eigenwert \(\lambda\) der algebraischen Vielfachheit \(\tau = n\) und der geometrischen Vielfachheit \(\varkappa = 1\) lässt sich in der Form
+\[A = X^{-1}J^{(n)}(\lambda)X\]
+mithilfe einer regulären Matrix \(X \in M^n\) darstellen.
+}
+
+\section{Orthogonale Projektionen}
+
+\dfn{}{
+\(\xi_k = \Le\langle x, f_k\Ri\rangle, \enspace k = 1,\hdots,n\) nennt man die \textsc{Fourier}-Koeffizienten von \(x\) bzgl. der ONB \(\mathbb{f}\).
+}
+
+\thm{}{
+\(x \in V\)\\
+\(\xi_j = \Le\langle x, f_j \Ri\rangle, \enspace j = 1,\hdots,s\)\\
+Es gilt immer:
+\[\norm{x - \sum_{j=1}^{s} \beta_j f_j} \geqslant \norm{x - \sum_{j=1}^{s} \xi_j f_j}\]
+} %Hier nochmal drüberschauen
+
+\thm{}{
+Für jedes \(y = \beta_1 f_1 + \hdots + \beta_s f_s \in F\) gilt
+\[\norm{x - y} \geqslant \norm{x - x_F}\]
+} %Hier auch weird
+
+\thm{Projektionssatz}{
+Sei \(F \sbst V\) ein Unterraum. Dann existiert für jedes \(x \in V\) genaue eine Zerlegung \(x = x_{F} + x_G\) mit \(x_F \in F\) und \(x_G \perp F\).
+}
+
+\dfn{}{
+\(P_F \colon V \to F\) mit \(P_F x = x_F\) nennt man die orthogonale Projektion auf \(F\).
+}
+
+\dfn{}{
+\(G = \{g \in V \colon g \perp F\} = F^{\perp}\) nennt man das orthogonale Komplement zu \(F\).
+}
+
+\section{Selbstadjungierte Operatoren und quadratische Formen}
+
+\thm{}{
+Zu jeder sesqui-linearen Form \(a\) existiert genau eine lineare Abbildung \(\mathscr{A} \colon V \to V\), so, dass (*) gilt.
+} %Der hier kommt doch safe nicht dran, asonsten fehlt Gleichung (*)
+
+\dfn{}{
+Der zu \(\mathscr{A}\) adjungierte Operator \(A^*\) ist durch \(a^*\) gegeben:
+\[\Le\langle A^*x, y\Ri\rangle = a^*[x,y] = \overline{a[y,x]}.\]
+Mit \(\Le\langle A^*x, y\Ri\rangle = \langle x, \mathscr{A}y\rangle\) und \(\overline{a[y,x]} = \overline{\langle Ay, x\rangle}\):
+\[\langle x, \mathscr{A}y\rangle = \overline{\langle Ay, x\rangle}.\]
+}
+
+\section{Stetige lineare Operatoren}
+
+\dfn{}{
+\(E, F\) Vektorräume über \(\KK \in \{\RR, \CC\}\) mit Normen \(\norm{\cdot}_E\) und \(\norm{\cdot}_F\).\\
+\(F \colon E \to F\) linear.\\
+Ein linearer Operator \(T \colon E \to F\) heißt beschränkt, genau dann, wenn
+\[\exists_{C>0} \enspace \forall_{x \in E} \colon \enspace \norm{Tx}_F \leqslant C \cdot \norm{x}_E \,.\]
+}
+
+\thm{}{
+Folgende Aussagen sind äquivalent:
+\begin{enumerate}[label=(\arabic*)]
+	\item \(T\) ist von \(E\) nach \(F\) beschränkt.
+	\item \(T\) ist in \(0_E\) stetig.
+	\item \(T\) ist auf \(E\) stetig.
+\end{enumerate}
+}
+
+\dfn{}{
+\(\mathscr{L}(E,F)\) sei die Menge aller stetigen linearen Abbildungen \(T \colon E \to F\).
+% UNVOLLSTÄNDIG
+}
+
+\thm{Operatornorm}{
+\(\mathscr{L}(E,F)\) ist ein Vektorraum über \(\KK\).
+\[\norm{T\,}_{\mathscr{L}(E,F)} = \sup_{x \in E, x \neq 0} \frac{\norm{Tx}_F}{\norm{x}_E}\]
+ist eine Norm auf \(\mathscr{L}(E,F)\). Sind \(E\) und \(F\) vollständig, dann ist auch \(\mathscr{L}(E,F)\) vollständig.
+}%Die Norm nur von T hat seltsames Spacing nach rechts.
+
+\chapter{Zur Diff.-rechnung für Funktionen mehrerer Var.}
+
+\section{Differenzierbarkeit}
+
+\dfn{Partielle Ableitung in \(x_j\)-Richtung}{
+\[\eval{\pdv{f}{x_j}}_{x=x^{(0)}} = \eval{\odv{\Le(f\Le(x^{(0)} + t \mathbb{e}_j\Ri)\Ri)}{t}}_{t=0} = \lim_{\tau \to 0} \frac{f\Le(x_1^{(0)}, \hdots, x_{j-1}^{(0)}, x_j^{(0)} + \tau, x_{j+1}^{(0)}, \hdots, x_n^{(0)}\Ri)}{\tau}\]
+}
+
+\dfn{}{
+\(f\) ist im Punkt \(x^{(0)} \in U\) (\textsc{Fréchet})-differenzierbar, genau dann, wenn \(A \in \mathscr{L}(E,F)\) mit
+\[f\Le(x^{(0)} + h\Ri) = f\Le(x^{(0)}\Ri) + A \cdot h + \mathscr{o}(h), \quad h \to 0_E \,.\]
+Dann ist \(\eval{\d f}_{x=x^{(0)}} = \mathscr{A}\). %Fehlt hier möglicherweiße noch ein der unter Teil des Ableitungsoperators?
+}
+
+\dfn{}{
+Die Richtungsableitung \(\mathrm{D}f\Le(x^{(0)}\Ri)h\) ist gegeben als
+\[\mathrm{D}f\Le(x^{(0)}\Ri)h \enspace=\enspace \lim_{t \to 0} \frac{f\Le(x^{(0)} + th\Ri) - f\Le(x^{(0)}\Ri)}{t} \enspace=\enspace \eval{\odv{}{t} f\Le(x^{(0)} + th\Ri)}_{t=0}\,.\]
+(jeweils für fixiertes \(h\))
+}
+
+\thm{}{
+Wenn \(f \colon U \sbst E \to F\) in \(x^{(0)} \in U\) \textsc{Fréchet}-differenzierbar ist, dann existieren alle Richtungsableitungen \(\mathrm{D}f\Le(x^{(0)}\Ri)h\) (für alle \(h \in E\)).
+}
+
+\dfn{}{
+\(f\) ist in \(x^{(0)} \in U\) schwach differenzierbar (\textsc{Gâteaux}-differenzierbar), genau dann, wenn
+\begin{enumerate}[label=(\arabic*)]
+	\item \(\mathrm{D}f\Le(x^{(0)}\Ri)h\) existiert für alle \(h \in E\).
+	\item \(\mathrm{D}f\Le(x^{(0)}\Ri)h\) ist linear in \(h\).
+	\item \(\mathrm{D}f\Le(x^{(0)}\Ri)h\) ist stetig in \(h\).
+\end{enumerate}
+\[f_{\text{s}}'\Le(x^{(0)}\Ri)h = \mathrm{D}f\Le(x^{(0)}\Ri)h; \quad f_{\text{s}}'\Le(x^{(0)}\Ri) \in \mathscr{L}(E,F)\]
+}
+
+\thm{}{
+Wenn \(f\) in \(x^{(0)}\) \textsc{Fréchet}-differenzierbar ist, dann ist \(f\) in \(x^{(0)}\) schwach differenzierbar und \(f_{\text{s}}'\Le(x^{(0)}\Ri) = f'\Le(x^{(0)}\Ri)\).
+}
+
+\thm{}{
+\begin{align*}
+	x &\mapsto \pdv{f}{x_j}(x), \quad j=1,\hdots,n \text{ stetig in } x^{(0)} \quad\implies\quad \exists f_{\text{s}}'\Le(x^{(0)}\Ri)\\
+	x &\mapsto \pdv{f}{x_j}(x), \quad j=1,\hdots,n \text{ stetig in } B_{\veps}\Le(x^{(0)}\Ri) \quad\implies\quad \exists f'\Le(x^{(0)}\Ri)
+\end{align*}
+}
+
+\section{Produkt- und Kettenregel}
+
+\thm{}{
+\(f \colon U \to F\) und \(\alpha \colon U \to \RR\) seien in \(x^{(0)} \in U\) \textsc{Fréchet}-differenzierbar. Dann ist \(\alpha \cdot f \colon U \to F\) in \(x^{(0)}\) \textsc{Fréchet}-differenzierbar.
+\[(\alpha f)'\Le(x^{(0)}\Ri) = \alpha \Le(x^{(0)}\Ri) f'\Le(x^{(0)}\Ri) + f\Le(x^{(0)}\Ri) \alpha '\Le(x^{(0)}\Ri)\]
+}
+
+\thm{}{
+\(f\) sei in \(x^{(0)} \in U\) \textsc{Fréchet}-differenzierbar.\\
+\(g\) sei in \(y^{(0)} \in V\) \textsc{Fréchet}-differenzierbar.
+\[\implies \quad \text{Dann ist } g \circ f \colon U \to G \text{ \textsc{Fréchet}-differenzierbar.}\]
+}
+%Möglicherweise ist hier noch was
+
+\section{Hauptsatz der Differenzialrechnung}
+
+\thm{}{
+\(f\) sei auf \(\overline{ab}\) \textsc{Gâteaux}-differenzierbar.\\
+Dann gilt:
+\begin{enumerate}[label=(\arabic*)]
+	\item \(\displaystyle \norm{f(b) - f(a)}_F \enspace\leqslant\enspace \sup_{x \in \overline{ab}} \Le(\norm{f_{\text{s}}'(a)}_{\mathscr{L}(E,F)} \cdot \norm{b-a}_E\Ri)\)
+	\item \(\displaystyle \norm{f(b) - f(a) - f_{\text{s}}'(a)(b-a)}_F \enspace\leqslant\enspace \sup_{x \in \overline{ab}} \Le(\norm{f_{\text{s}}'(x) - f_{\text{s}}'(a)}_{\mathscr{L}(E,F)} \cdot \norm{b-a}\Ri)\)
+\end{enumerate}
+}
+
+\section{Ableitungen höherer Ordnung}
+
+\dfn{}{
+Ist \(g\) in \(x^{(0)} \in U\) partiell in \(x_k\) differenzierbar, dann sei
+\[\pdv{g\Le(x^{(0)}\Ri)}{x_k} = \eval{\Le(\pdv{}{x_k}\Le(\pdv{f}{x_j}\Ri)\Ri)}_{x=x^{(0)}} = \eval{\pdv{f}{x_k,x_j}}_{x=x^{(0)}}.\]
+}
+
+\thm{Symmetriesatz}{
+Wenn in \(U\) beide partiellen Ableitungen
+\[\pdv{f}{x_k,x_j} \text{ und } \pdv{f}{x_j,x_k}\]
+existieren, und beide stetig sind, dann gilt auf \(U\)
+\[\pdv{f}{x_k,x_j} = \pdv{f}{x_j,x_k}\,.\]
+}
+
+\dfn{}{
+Wenn \(f'(\cdot)\) in \(x^{(0)} \in U\) \textsc{Fréchet}-differenzierbar ist, dann sei
+\[f''\Le(x^{(0)}\Ri) = \eval{\Le(f'(\cdot)\Ri)'}_{x=x^{(0)}} \in \mathscr{L}\Le(E,\mathscr{L}(E,F)\Ri)\]
+}
+
+\section{\texorpdfstring{Der Satz von \textsc{Taylor}}{Der Satz von Taylor}}
+
+%SUS
+
+\section{Extremwerte von Funktionen mit mehreren Veränderlichen}
+
+\dfn{}{
+\(f\) nimmt in \(x^{(0)}\) ein\\
+lokales Maximum an
+\[\Leftrightarrow \quad \exists_{\veps > 0} \enspace \forall_{x \in U, \norm{x-x^{(0)}} < \veps} \colon \enspace f(x) \leqslant f\Le(x^{(0)}\Ri)\]
+lokales Maximum an
+\[\Leftrightarrow \quad \exists_{\veps > 0} \enspace \forall_{x \in U, \norm{x-x^{(0)}} < \veps} \colon \enspace f(x) \geqslant f\Le(x^{(0)}\Ri)\]
+}
+
+\thm{Notwendiges Kriterium}{
+\(f \colon U \sbst E \to \RR\) nehme in den inneren Punkten \(x^{(0)} \in U\) einen lokalen Extremwert an. Wenn die Richtungsableitung \(\mathrm{D}f\Le(x^{(0)}\Ri)h\) existiert, so muss dann
+\[\mathrm{D}f\Le(x^{(0)}\Ri)h = 0\]
+gelten.
+}
+
+\section{Der Satz über implizite Funktionen}
+
+\dfn{Lokale Auflösbarkeit}{
+\(\Le(x^{(0)}, y^{(0)}\Ri) \in W\)\\
+\(\Phi\Le(x^{(0)}, y^{(0)}\Ri) = 0\)\\
+\(\Phi(x,y) = 0\) ist lokal in einer Umgebung von \(\Le(x^{(0)}, y^{(0)}\Ri)\) zu \(y = f(x)\) auflösbar, genau dann, wenn
+\[\exists_{\veps > 0} \enspace \exists_{\delta > 0} \enspace \exists f \colon \enspace U_{\veps}\Le(x^{(0)}\Ri) \to U_{\delta}\Le(y^{(0)}\Ri)\]
+\(U_{\veps}\Le(x^{(0)}\Ri) \times U_{\delta}\Le(y^{(0)}\Ri) \sbst W\)
+\begin{enumerate}[label=(\arabic*)]
+	\item \(\displaystyle \forall_{x \in U_{\veps}\Le(x^{(0)}\Ri)} \colon \enspace \Phi(x,f(x)) = 0\)
+	\item \(\displaystyle \forall_{(x,y) \in U_{\veps}\Le(x^{(0)}\Ri) \times U_{\delta}\Le(y^{(0)}\Ri)} \colon \enspace \Phi(x,y) = 0 \quad \implies \quad  y = f(x)\)
+\end{enumerate}
+}
+
+\thm{zu impliziten Funktionen}{
+\(W \sbst \RR_x^m \times \RR_y^n\) offen\\
+\(\Le(x^{(0)}, y^{(0)}\Ri) \in W\)\\
+\(\Phi \colon W \to \RR^n\)\\
+\(\Phi\Le(x^{(0)}, y^{(0)}\Ri) = 0\)\\
+\(\Phi\) sei aus der Klasse \(C^p, \enspace p \geqslant 1\) (d.h. alle partiellen Ableitungen bis zur Ordnung \(p\) existieren und sind stetig).\\
+\(\Phi_y'\Le(x^{(0)}, y^{(0)}\Ri)\) ist invertierbar
+\[\implies \quad \Phi \text{ ist lokal zu } y = f(x) \text{ auflösbar und } f \text{ ist von der Klasse } C^p \, .\]
+} %Nicht sicher ob vollständig. Vllt. gehört nächste Zeile noch dazu.
+
+\section{Umkehrfunktion}
+
+\dfn{}{
+\(f \colon U \to V\) ist ein \(C^p\)-Diffeomorphismus genau dann, wenn
+\begin{itemize}
+	\item \(f \colon U \to V\) bijektiv
+	\item \(f, f^{-1}\) aus der Klasse \(C^p\)
+\end{itemize}
+}
+
+\thm{}{
+idk
+}
+
+
+\section{Darstellung von Gradient und \textsc{Laplace} in verschiedenen Koordinatensystemen}
+
+\section{Extremwerte unter Nebenbedingungen}
+
+\dfn{\textsc{Lagrange}-Funktion}{
+\[\mathcal{L}(x,y;\lambda) = f(x,y) - \lambda \cdot F(x,y)\]
+\(\lambda:\) \textsc{Lagrange}-Faktor
+}
+
+\dfn{}{
+\begin{enumerate}[label=(\arabic*)]
+	\item \(F\Le(\tilde{x}^{(0)}\Ri) = \mathbb{0}_n\)
+	\item \(\displaystyle\exists_{\veps > 0} \enspace \forall_{\tilde{x} \in U_{\veps}\Le(\tilde{x}^{(0)}\Ri), \, F \Le(\tilde{x}\Ri) = \mathbb{0}_n} \colon  \enspace f\Le(\tilde{x}^{(0)}\Ri) \geqslant f\Le(\tilde{x}\Ri) \text{ bzw. } f\Le(\tilde{x}^{(0)}\Ri) \leqslant f\Le(\tilde{x}\Ri)\)
+\end{enumerate} %Die Klammern von F(x) und F\Le(x\Ri) sind gleich groß, doch der Abstand zwischen linker Klammer und F ist unterschiedlich. Wieso?
+}
+
+%Vielleicht fehlt hier noch was
+
+\chapter{Funktionenfolgen}
+
+\section{Doppelfolgen, Gleichmäßigkeit}
+
+\dfn{Doppelfolge}{
+\(a \colon \NN \times \NN \to M\)\\
+also:
+\[ \Le(a_{m,n}\Ri)_{m \in \NN, \, n \in \NN} = \Le(a_{m,n}\Ri)\]
+}
+
+\dfn{}{
+\(A(\cdot)\) Aussageform, Eigenschaft\\
+\(X\) Variablenmenge\\
+\(A\) ist für alle \(x \in X\) punktweise erfüllt, genau dann, wenn
+\[\forall_{x \in X} \colon  A(x) \text{ wahr }\]
+Dabei können die Parameter, die in \(A\) eingehen von \(x\) abhängen.
+}
+
+\dfn{}{
+\(A\) ist gleichmäßig bzgl. \(x \in X\) erfüllt, genau dann, wenn \(\forall_{x \in X} \colon A(x)\) wahr ist, und wenn die Parameter, welche in \(A\) eingehen, unabhängig von \(x\) gewählt werden können.
+}
+
+\thm{Satz über das Vertauschen von Grenzwerten}{
+\((M,d)\) vollständiger metrischer Raum\\
+\(a \colon \NN \times \NN \to M\)
+\begin{enumerate}[label=(\arabic*)]
+	\item \(\displaystyle\forall_{n\in\NN} \enspace \exists \lim_{m \to \infty} a_{m,n} = v_n\)
+	\item \(\displaystyle\forall_{m\in\NN} \enspace \exists \lim_{n \to \infty} a_{m,n} = u_m\)
+\end{enumerate}
+Einer dieser beiden Grenzwerte werde gleichmäßig angenommen.\\
+\(\implies\)
+\begin{itemize}
+	\item \(\Le(u_m\Ri)\) und \(\Le(v_n\Ri)\) konvergieren
+	\item \(\displaystyle \lim_{m \to \infty} u_m = \lim_{n \to \infty} v_n\)
+\end{itemize}
+Damit darf ich unter der zusätzlichen Annahme der Gleichmäßigkeit eines der Grenzwerte die doppelten Grenzwerte vertauschen:
+\[\lim_{m \to \infty} \Le(\lim_{n \to \infty} a_{m,n}\Ri) = \lim_{n \to \infty} \Le(\lim_{m \to \infty} a_{m,n}\Ri)\]
+}
+
+\section{Funktionenfolgen}
+\((M,d) = (\RR, \abs{\cdot}), \enspace I \sbst \RR, \enspace I \neq \emptyset\)\\
+\(f, f_n \colon I \to \RR, \enspace n \in \NN\)\\
+\(\Le(f_n\Ri)_{n \in \NN}\) Funktionenfolge
+
+\dfn{}{
+\(f_n \overset{n \to \infty}{\longrightarrow} f\) punktweise bzgl. \(x \in I\) genau dann, wenn % Fehlt hier vielleicht ein zweiter Pfeil für gleichmäßige Konv.? Ne glaube nicht, aber besser nochmal nachschauen
+\[\forall_{x \in I} \lim_{n \to \infty} f_n(x) = f(x)\]
+d.h.
+\[\forall_{x \in I} \enspace \forall_{\veps > 0} \enspace \exists_{N(\veps,x)} \enspace \forall_{n>N} \colon \enspace \abs{f_n(x) - f(x)} < \veps\]
+}
+
+\dfn{}{
+\(f_n \overset{n \to \infty}{\longrightsquigarrow} f\) gleichmäßig bzgl. \(x \in I\) genau dann, wenn %Zwie übereinanderliegende Pfeile?
+\[\forall_{\varepsilon > 0} \enspace \exists_{N(\veps)} \enspace \forall_{x \in I} \enspace \forall_{n \geqslant N(\veps)} \colon \enspace \abs{f_n(x) - f(x)} < \veps\]
+}
+
+\thm{}{
+\(f_n \colon I \to \RR, \enspace n \in \NN, \enspace x_0 \in I\)
+\begin{enumerate}[label=(\arabic*)]
+	\item \(\displaystyle \forall_{n \in \NN} \lim_{x \to x_0} f_n(x) = \vphi_n\)
+	\item \(f_n \overset{n \to \infty}{\longrightsquigarrow} f, \enspace f \colon I \to \RR\)
+\end{enumerate}
+\[\implies \quad \exists \lim_{x \to x_0} f(x) = \lim_{n \to \infty} \vphi_n\]
+}
+
+\section{Die Folge der Ableitungen}
+
+\thm{}{
+\(f_n \in C^1\Le([a,b], \RR\Ri), \enspace \vphi \colon [a,b] \to \RR\)\\ %Werden Funktionenklasen C aufrechtgesetzt?
+\(f_n \overset{n \to \infty}{\longrightarrow} f\) punktweise für alle \(x \in [a,b]\)\\
+\(f_n' \overset{n \to \infty}{\longrightsquigarrow} \vphi\) gleichmäßig bzgl. \(x \in [a,b]\)\\
+\(\implies \quad f \in C^1\Le([a,b], \RR\Ri) \text{ und } \vphi = f'\)
+\[\lim_{n \to \infty} \odv{f_n}{x} = \odv{}{x} \lim_{n \to \infty} f_n\]
+}
+
+\section{Funktionenreihen}
+
+\(f_n \colon I \sbst \RR \to \RR\)\\
+\(S_n(x) = \sum_{k=1}^{n} f_k(x), \enspace x \in I\)
+
+\dfn{}{
+Die Reihe \(\sum_{k=1}^{\infty} f_k\) konvergiert punktweise für alle \(x \in I\) genau dann, wenn
+\[S_n(x) \overset{n \to \infty}{\longrightarrow} S(x) \enspace \eqcolon \enspace \sum_{k=1}^{\infty} f_k(x)\]
+punktweise konvergiert.
+}
+
+\dfn{}{
+Die Reihe \(\sum_{k=1}^{\infty} f_k\) konvergiert gleichmäßig bzgl. \(x \in I\) genau dann, wenn
+\[S_n(x) \overset{n \to \infty}{\longrightsquigarrow} S(x) \enspace = \enspace \sum_{k=1}^{\infty} f_k(x) \, .\]
+}
+
+\thm{}{
+\(f_n \in C\Le([a,b], \RR\Ri), \enspace n \in \NN \text{ und } S(x) = \sum_{k=1}^{\infty} f_k(x)\) konvergiere gleichmäßig.
+\[\text{Dann ist } S \in C\Le([a,b], \RR\Ri)\]
+}
+
+\section{Potenzreihen}
+
+\section{Der Fixpunktsatz von \textsc{Banach}}
+
+\((M,d)\) metrischer Raum, \(M \neq \emptyset\)
+
+\dfn{}{
+Man nennt \(T \colon M \to M\) eine Kontraktion, wenn ein \(\alpha < 1\) existiert, sodass für alle \(x, y \in M\)
+\[d(Tx, Ty) \leqslant \alpha \cdot d(x,y) \, .\]
+}
+
+\thm{}{
+Sei \((M,d)\) vollständig und \(T \colon M \to M\) eine Kontraktion. Dann gibt es genau ein \(\tilde{x} \in M\), sodass
+\[\underbrace{\tilde{x} = T\tilde{x}}_{\text{Fixpunkt}} \, .\]
+}
+
+\noindent\(f \,\mleft(x\mright)\)\\
+\(f (x)\)\\
+\(f \left(x\right)\)
+
+\end{document}}
