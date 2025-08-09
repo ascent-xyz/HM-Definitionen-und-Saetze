@@ -110,10 +110,9 @@ Für beliebige \(r,s \in \RR\) gilt immer genau einer der folgenden Fälle:
 	r &= s\\
 	r &> s
 \end{align*}
-% Hier kommt maybe noch was hin. K.A. Ob das noch dazugehört.
 }
 
-%Maybe Absolutbetrag und Abstsand auf R auch eine Definition
+%Maybe Absolutbetrag und Abstsand auf R auch eine Definition - Nein
 
 \section{\texorpdfstring{Grenzwerte in \(\RR\)}{Grenzwerte in R}}
 
@@ -197,8 +196,19 @@ konvergiert.
 
 \thm{}{Jede absolut konvergente Reihe konvergiert.}
 
-%Umordnungssatz für abs. konv. Reihen?
-%Umordungssatz von Riemann?
+\thm{Umordungssatz für absolut konvergente Reihen}{
+\(a_k \in \RR, \enspace k \in \NN\)\\
+\(\sum_{k=1}^{\infty} a_k\) konvergiere absolut\\
+\(\Phi \colon \NN \overset{\text{bij.}}{\longrightarrow} \NN \quad b_k = a_{\Phi(k)}\)
+\[\implies \quad \sum_{k=1}^{\infty} b_k \text{ konvergiert absolut und } \sum_{k=1}^{\infty} a_k = \sum_{k=1}^{\infty} b_k.\]
+}
+
+\thm{Umordnungssatz von \textsc{Riemann}}{
+\(a_k = a_k^+ - a_k^-\)\\
+\(a_k \overset{k \to \infty}{\longrightarrow} 0\)\\
+Angenommen beide Reihen \(\sum_{k=1}^{\infty} a_k^+\) und \(\sum_{k=1}^{\infty} a_k^-\) divergieren. Dann existiert für jedes \(r \in \RR\) eine Umordnung \(\Phi \colon \NN \overset{\text{bij.}}{\longrightarrow} \NN\), sodass
+\[\sum_{k=1}^{\infty} a_{\Phi_r(k)} = r \,.\]
+}
 
 \thm{}{
 \(\prod_{k=1}^{\infty} a_k\) konvergiert genau dann, wenn die Reihe \(\sum_{k=1}^{\infty} \ln{(a_k)}\) konvergiert, wobei
@@ -219,7 +229,25 @@ Eine Menge \(V\) nennt man Vektorraum über den Körper \(\KK\), falls die Opera
 	\cdot \:&\colon \KK \times V \to V
 \end{align*}
 existieren mit folgenden Eigenschaften:
-} %Jo hier fehlt noch was
+\begin{enumerate}
+	\item \((V,+)\) ist eine \textsc{Abel}sche Gruppe:
+	\begin{itemize}
+		\item \(\Le(A_+\Ri): (x + y) + z \enspace=\enspace x + (y + z)\)
+		\item \(\Le(N_+\Ri): \exists_{0_V \in V} \enspace \forall_{x \in V} \colon \enspace x + 0_V \enspace=\enspace 0_V + x \enspace=\enspace x\)
+		\item \(\Le(I_+\Ri): \forall_{x \in V} \enspace \exists_{(-x) \in V} \colon \enspace x + (-x) \enspace=\enspace (-x) + x \enspace=\enspace 0_V\)
+		\item \(\Le(K_+\Ri): x + y \enspace=\enspace y + x \text{ mit } x,y,z \in V\)
+	\end{itemize}
+	\item Eigenschaften der Multiplikation mit einem Skalar:
+	\begin{enumerate}[label=(S\arabic*)]
+		\item \(\alpha \cdot (x+y) = \alpha \cdot x + \alpha \cdot y\)
+		\item \((\alpha + \beta) \cdot x = \alpha \cdot x + \beta \cdot x\)
+		\item \(\alpha \cdot (\beta \cdot x) = (\alpha \cdot \beta) \cdot x\)
+		\item \(1_{\KK} \cdot x = x\)
+	\end{enumerate}
+	für alle \(\alpha, \beta \in \KK, \enspace x, y \in V\)
+\end{enumerate}
+
+}
 
 \dfn{Reelles Skalarprodukt}{
 Sei \(V\) ein Vektorraum über \(\KK = \RR\). Dann nennt man \(\langle\cdot,\cdot\rangle\colon V \times V \to \RR\) mit den Eigenschaften \((1)_{S\RR}\) - \((3)_{S\RR}\) ein (reelles) Skalarprodukt auf \(V\).
@@ -466,9 +494,12 @@ Wir nennen \(f\) in \(z_0\) differenzierbar g.d.w.
 
 \section{Regeln für das Rechnen mit Ableitungen}
 
+\(f,f_1,f_2\) wie eben\\
+\(g \colon X \to \KK\)
+
 \thm{}{
-\(f,\, f_1,\, f_2,\, g\) differenzierbar im Punkt \(x_0 \in \interior(X)\)\\ %Möglicherweise unvollständig
-\(\Longleftrightarrow\) Dann existieren folgende Ableitungen in \(x_0\):
+\(f, f_1, f_2, g\) differenzierbar im Punkt \(x_0 \in \interior(X)\)\\
+\(\implies\) Dann existieren folgende Ableitungen in \(x_0\):
 \begin{enumerate}
     \item \((f_1 \pm f_2)\prime(x_0) = f_1\prime(x_0) \pm f_2\prime(x_0)\)
     \item \((\alpha \cdot f)\prime(x_0) = \alpha \cdot f\prime(x_0) \qquad \alpha \in \bbK\)
@@ -543,7 +574,7 @@ Wir nennen \(f\) in \(z_0\) differenzierbar g.d.w.
 	\(f \colon X \to \KK^m, g \colon X \to \KK\)\\
 	\(X\) offen, \(x_0 \in X\), \(f\) und \(g\) sind in \(x_0\)\\ %HIER FEHLT WAS
 	Dann existiert:
-	\[(g \cdot f)^{(n)}(x_0) = \sum_{k=0}^{n} \begin{pmatrix}n\\k\end{pmatrix} \cdot g^{(n-k)}(x_0) \cdot f^{(k)}(x_0)\]
+	\[(g \cdot f)^{(n)}(x_0) = \sum_{k=0}^{n} \binom{n}{k} \cdot g^{(n-k)}(x_0) \cdot f^{(k)}(x_0)\]
 }
 
 \section{\texorpdfstring{Der Satz von \textsc{Taylor}}{Der Satz von Taylor}}
