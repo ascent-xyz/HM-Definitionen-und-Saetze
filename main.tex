@@ -483,12 +483,12 @@ Wir nennen \(f\) in \(z_0\) differenzierbar g.d.w.
 \[\lim_{h \to 0} \varphi(f,z_0,h) = f\prime(z_0) \in \mathbb{C}\] existiert.
 }
 
-\section{\texorpdfstring{Die Landau-Symbole \(\mathscr{o}\) und \(\mathscr{O}\)}{Die Landau-Symbole o und O}}
+\section{\texorpdfstring{Die Landau-Symbole \(\mathcal{o}\) und \(\mathcal{O}\)}{Die Landau-Symbole o und O}}
 
 \dfn{\textsc{Landau}-Symbole}{
-\(f \overset{x \to x_0}{=} \mathscr{O}(g)\) g.d.w.
+\(f \overset{x \to x_0}{=} \mathcal{O}(g)\) g.d.w.
 \[\exists_{\delta>0} \enspace \exists_{C\in \mathbb{R}} \enspace \forall_{x \in U_{\delta}(x_0) \cap X} \colon \enspace \norm{f(x)} \leqslant C \cdot \abs{g(x)}\]
-\(f \overset{x \to x_0}{=} \mathscr{o}(g)\) g.d.w
+\(f \overset{x \to x_0}{=} \mathcal{o}(g)\) g.d.w
 \[\forall_{\varepsilon>0} \enspace \exists_{\delta_{\varepsilon}>0} \enspace \forall_{x\in U_{\delta_{\varepsilon}}(x_0)\cap X} \colon \enspace \norm{f(x)} \leqslant \varepsilon \cdot \abs{g(x)}\]
 }
 
@@ -552,7 +552,7 @@ Wir nennen \(f\) in \(z_0\) differenzierbar g.d.w.
 \(f,g \colon [a,b] \to \RR\) stetig\\
 \(f,g\) auf \(]a,b[\) differenzierbar\\
 \(g\prime(x) \neq 0\) für \(]a,b[\)\\
-\[\implies \quad \exists_{c \in {]{a,b}[}} \colon \enspace \frac{f\prime(c)}{g\prime(c)} = \frac{f(b) - f(a)}{g(b) - g(a)}\] %REVIEWEN!!!
+\[\implies \quad \exists_{c \in {]{a,b}[}} \colon \enspace \frac{f\prime(c)}{g\prime(c)} = \frac{f(b) - f(a)}{g(b) - g(a)}\]
 }
 
 \thm{Mittelwertsatz der Differenzialrechnung (Formel von \textsc{Lagrange})}{
@@ -571,10 +571,11 @@ Wir nennen \(f\) in \(z_0\) differenzierbar g.d.w.
 \section{Höhere Ableitungen}
 
 \thm{Satz von \textsc{Leibniz}}{
-	\(f \colon X \to \KK^m, g \colon X \to \KK\)\\
-	\(X\) offen, \(x_0 \in X\), \(f\) und \(g\) sind in \(x_0\)\\ %HIER FEHLT WAS
-	Dann existiert:
-	\[(g \cdot f)^{(n)}(x_0) = \sum_{k=0}^{n} \binom{n}{k} \cdot g^{(n-k)}(x_0) \cdot f^{(k)}(x_0)\]
+	\(f \colon X \to \KK^m\)\\
+	\(g \colon X \to \KK\)\\
+	\(X\) offen, \(x_0 \in X\), \(f\) und \(g\) sind in \(x_0\) \(m\)-fach differenzierbar.\\
+	Dann existiert
+	\[(g \cdot f)^{(m)}(x_0) = \sum_{k=0}^{m} \binom{m}{k} \cdot g^{(m-k)}(x_0) \cdot f^{(k)}(x_0) \,.\]
 }
 
 \section{\texorpdfstring{Der Satz von \textsc{Taylor}}{Der Satz von Taylor}}
@@ -1072,16 +1073,16 @@ lineare Hülle des Systems \(\{f_1,\hdots,f_k\}\)
 \dfn{}{
 \(\rho(A) = \CC \backslash \sigma(A)\) Resolventenmenge.
 \begin{align*}
-	\mu \in \rho(A) &\Leftrightarrow d_A(\lambda) = \det(A - \mu\id) \neq 0\\
-	&\Leftrightarrow A - \lambda\id \text{ invertierbar}\\
-	&\Leftrightarrow \text{ Es existiert } (A - \mu\id)^{-1}
+	\mu \in \rho(A) &\Leftrightarrow d_A(\mu) = \det(A - \mu\id) \neq 0\\
+	&\Leftrightarrow A - \mu\id \text{ invertierbar}\\
+	&\Leftrightarrow \text{Es existiert } (A - \mu\id)^{-1}
 \end{align*}
 }
 
 \dfn{}{
 \(\mu \in \rho(A)\)\\
 \[\Gamma_{\mu}(A) = (A - \mu\id)^{-1}\]
-Resolvente von A im Punkt \(\mu \in \rho(A)\).
+Resolvente von \(A\) im Punkt \(\mu \in \rho(A)\).
 \[\Gamma_{\mu}(A) \colon \rho(A) = \CC \backslash \sigma(A) \to M^{n,n}\]
 }
 
@@ -1260,14 +1261,14 @@ Sei \(F \sbst V\) ein Unterraum. Dann existiert für jedes \(x \in V\) genaue ei
 \section{Selbstadjungierte Operatoren und quadratische Formen}
 
 \thm{}{
-Zu jeder sesqui-linearen Form \(a\) existiert genau eine lineare Abbildung \(\mathscr{A} \colon V \to V\), so, dass (*) gilt.
+Zu jeder sesqui-linearen Form \(a\) existiert genau eine lineare Abbildung \(\mathcal{A} \colon V \to V\), so, dass (*) gilt.
 } %Der hier kommt doch safe nicht dran, asonsten fehlt Gleichung (*)
 
 \dfn{}{
-Der zu \(\mathscr{A}\) adjungierte Operator \(A^*\) ist durch \(a^*\) gegeben:
+Der zu \(\mathcal{A}\) adjungierte Operator \(A^*\) ist durch \(a^*\) gegeben:
 \[\Le\langle A^*x, y\Ri\rangle = a^*[x,y] = \overline{a[y,x]}.\]
-Mit \(\Le\langle A^*x, y\Ri\rangle = \langle x, \mathscr{A}y\rangle\) und \(\overline{a[y,x]} = \overline{\langle Ay, x\rangle}\):
-\[\langle x, \mathscr{A}y\rangle = \overline{\langle Ay, x\rangle}.\]
+Mit \(\Le\langle A^*x, y\Ri\rangle = \langle x, \mathcal{A}y\rangle\) und \(\overline{a[y,x]} = \overline{\langle Ay, x\rangle}\):
+\[\langle x, \mathcal{A}y\rangle = \overline{\langle Ay, x\rangle}.\]
 }
 
 \section{Stetige lineare Operatoren}
@@ -1289,14 +1290,14 @@ Folgende Aussagen sind äquivalent:
 }
 
 \dfn{}{
-\(\mathscr{L}(E,F)\) sei die Menge aller stetigen linearen Abbildungen \(T \colon E \to F\).
+\(\mathcal{L}(E,F)\) sei die Menge aller stetigen linearen Abbildungen \(T \colon E \to F\).
 % UNVOLLSTÄNDIG
 }
 
 \thm{Operatornorm}{
-\(\mathscr{L}(E,F)\) ist ein Vektorraum über \(\KK\).
-\[\norm{T\,}_{\mathscr{L}(E,F)} = \sup_{x \in E, x \neq 0} \frac{\norm{Tx}_F}{\norm{x}_E}\]
-ist eine Norm auf \(\mathscr{L}(E,F)\). Sind \(E\) und \(F\) vollständig, dann ist auch \(\mathscr{L}(E,F)\) vollständig.
+\(\mathcal{L}(E,F)\) ist ein Vektorraum über \(\KK\).
+\[\norm{T\,}_{\mathcal{L}(E,F)} = \sup_{x \in E, x \neq 0} \frac{\norm{Tx}_F}{\norm{x}_E}\]
+ist eine Norm auf \(\mathcal{L}(E,F)\). Sind \(E\) und \(F\) vollständig, dann ist auch \(\mathcal{L}(E,F)\) vollständig.
 }%Die Norm nur von T hat seltsames Spacing nach rechts.
 
 \chapter{Zur Diff.-rechnung für Funktionen mehrerer Var.}
@@ -1308,9 +1309,9 @@ ist eine Norm auf \(\mathscr{L}(E,F)\). Sind \(E\) und \(F\) vollständig, dann 
 }
 
 \dfn{}{
-\(f\) ist im Punkt \(x^{(0)} \in U\) (\textsc{Fréchet})-differenzierbar, genau dann, wenn \(A \in \mathscr{L}(E,F)\) mit
-\[f\Le(x^{(0)} + h\Ri) = f\Le(x^{(0)}\Ri) + A \cdot h + \mathscr{o}(h), \quad h \to 0_E \,.\]
-Dann ist \(\eval{\d f}_{x=x^{(0)}} = \mathscr{A}\). %Fehlt hier möglicherweiße noch ein der unter Teil des Ableitungsoperators?
+\(f\) ist im Punkt \(x^{(0)} \in U\) (\textsc{Fréchet})-differenzierbar, genau dann, wenn \(A \in \mathcal{L}(E,F)\) mit
+\[f\Le(x^{(0)} + h\Ri) = f\Le(x^{(0)}\Ri) + A \cdot h + \mathcal{o}(h), \quad h \to 0_E \,.\]
+Dann ist \(\eval{\d f}_{x=x^{(0)}} = \mathcal{A}\). %Fehlt hier möglicherweiße noch ein der unter Teil des Ableitungsoperators?
 }
 
 \dfn{}{
@@ -1330,7 +1331,7 @@ Wenn \(f \colon U \sbst E \to F\) in \(x^{(0)} \in U\) \textsc{Fréchet}-differe
 	\item \(\mathrm{D}f\Le(x^{(0)}\Ri)h\) ist linear in \(h\).
 	\item \(\mathrm{D}f\Le(x^{(0)}\Ri)h\) ist stetig in \(h\).
 \end{enumerate}
-\[f_{\text{s}}'\Le(x^{(0)}\Ri)h = \mathrm{D}f\Le(x^{(0)}\Ri)h; \quad f_{\text{s}}'\Le(x^{(0)}\Ri) \in \mathscr{L}(E,F)\]
+\[f_{\text{s}}'\Le(x^{(0)}\Ri)h = \mathrm{D}f\Le(x^{(0)}\Ri)h; \quad f_{\text{s}}'\Le(x^{(0)}\Ri) \in \mathcal{L}(E,F)\]
 }
 
 \thm{}{
@@ -1364,8 +1365,8 @@ Wenn \(f\) in \(x^{(0)}\) \textsc{Fréchet}-differenzierbar ist, dann ist \(f\) 
 \(f\) sei auf \(\overline{ab}\) \textsc{Gâteaux}-differenzierbar.\\
 Dann gilt:
 \begin{enumerate}[label=(\arabic*)]
-	\item \(\displaystyle \norm{f(b) - f(a)}_F \enspace\leqslant\enspace \sup_{x \in \overline{ab}} \Le(\norm{f_{\text{s}}'(a)}_{\mathscr{L}(E,F)} \cdot \norm{b-a}_E\Ri)\)
-	\item \(\displaystyle \norm{f(b) - f(a) - f_{\text{s}}'(a)(b-a)}_F \enspace\leqslant\enspace \sup_{x \in \overline{ab}} \Le(\norm{f_{\text{s}}'(x) - f_{\text{s}}'(a)}_{\mathscr{L}(E,F)} \cdot \norm{b-a}\Ri)\)
+	\item \(\displaystyle \norm{f(b) - f(a)}_F \enspace\leqslant\enspace \sup_{x \in \overline{ab}} \Le(\norm{f_{\text{s}}'(a)}_{\mathcal{L}(E,F)} \cdot \norm{b-a}_E\Ri)\)
+	\item \(\displaystyle \norm{f(b) - f(a) - f_{\text{s}}'(a)(b-a)}_F \enspace\leqslant\enspace \sup_{x \in \overline{ab}} \Le(\norm{f_{\text{s}}'(x) - f_{\text{s}}'(a)}_{\mathcal{L}(E,F)} \cdot \norm{b-a}\Ri)\)
 \end{enumerate}
 }
 
@@ -1385,7 +1386,7 @@ existieren, und beide stetig sind, dann gilt auf \(U\)
 
 \dfn{}{
 Wenn \(f'(\cdot)\) in \(x^{(0)} \in U\) \textsc{Fréchet}-differenzierbar ist, dann sei
-\[f''\Le(x^{(0)}\Ri) = \eval{\Le(f'(\cdot)\Ri)'}_{x=x^{(0)}} \in \mathscr{L}\Le(E,\mathscr{L}(E,F)\Ri)\]
+\[f''\Le(x^{(0)}\Ri) = \eval{\Le(f'(\cdot)\Ri)'}_{x=x^{(0)}} \in \mathcal{L}\Le(E,\mathcal{L}(E,F)\Ri)\]
 }
 
 \section{\texorpdfstring{Der Satz von \textsc{Taylor}}{Der Satz von Taylor}}
@@ -1411,7 +1412,7 @@ gelten.
 \section{Der Satz über implizite Funktionen}
 
 \dfn{Lokale Auflösbarkeit}{
-\(\Le(x^{(0)}, y^{(0)}\Ri) \in W\)\\
+\(\Le(x^{(0)}, y^{(0)}\Ri) \in W\)\vspace{4pt}\\
 \(\Phi\Le(x^{(0)}, y^{(0)}\Ri) = 0\)\\
 \(\Phi(x,y) = 0\) ist lokal in einer Umgebung von \(\Le(x^{(0)}, y^{(0)}\Ri)\) zu \(y = f(x)\) auflösbar, genau dann, wenn
 \[\exists_{\veps > 0} \enspace \exists_{\delta > 0} \enspace \exists f \colon \enspace U_{\veps}\Le(x^{(0)}\Ri) \to U_{\delta}\Le(y^{(0)}\Ri)\]
@@ -1423,11 +1424,11 @@ gelten.
 }
 
 \thm{zu impliziten Funktionen}{
-\(W \sbst \RR_x^m \times \RR_y^n\) offen\\
-\(\Le(x^{(0)}, y^{(0)}\Ri) \in W\)\\
-\(\Phi \colon W \to \RR^n\)\\
-\(\Phi\Le(x^{(0)}, y^{(0)}\Ri) = 0\)\\
-\(\Phi\) sei aus der Klasse \(C^p, \enspace p \geqslant 1\) (d.h. alle partiellen Ableitungen bis zur Ordnung \(p\) existieren und sind stetig).\\
+\(W \sbst \RR_x^m \times \RR_y^n\) offen\vspace{3pt}\\
+\(\Le(x^{(0)}, y^{(0)}\Ri) \in W\)\vspace{3pt}\\
+\(\Phi \colon W \to \RR^n\)\vspace{3pt}\\
+\(\Phi\Le(x^{(0)}, y^{(0)}\Ri) = 0\)\vspace{3pt}\\
+\(\Phi\) sei aus der Klasse \(C^p, \enspace p \geqslant 1\) (d.h. alle partiellen Ableitungen bis zur Ordnung \(p\) existieren und sind stetig).\vspace{3pt}\\
 \(\Phi_y'\Le(x^{(0)}, y^{(0)}\Ri)\) ist invertierbar
 \[\implies \quad \Phi \text{ ist lokal zu } y = f(x) \text{ auflösbar und } f \text{ ist von der Klasse } C^p \, .\]
 } %Nicht sicher ob vollständig. Vllt. gehört nächste Zeile noch dazu.
@@ -1452,7 +1453,7 @@ idk
 \section{Extremwerte unter Nebenbedingungen}
 
 \dfn{\textsc{Lagrange}-Funktion}{
-\[\mathcal{L}(x,y;\lambda) = f(x,y) - \lambda \cdot F(x,y)\]
+\[\mathscr{L}(x,y;\lambda) = f(x,y) - \lambda \cdot F(x,y)\]
 \(\lambda:\) \textsc{Lagrange}-Faktor
 }
 
@@ -1517,7 +1518,7 @@ d.h.
 }
 
 \dfn{}{
-\(f_n \overset{n \to \infty}{\longrightsquigarrow} f\) gleichmäßig bzgl. \(x \in I\) genau dann, wenn %Zwie übereinanderliegende Pfeile?
+\(f_n \overset{n \to \infty}{\rightrightarrows} f\) gleichmäßig bzgl. \(x \in I\) genau dann, wenn %Zwie übereinanderliegende Pfeile?
 \[\forall_{\varepsilon > 0} \enspace \exists_{N(\veps)} \enspace \forall_{x \in I} \enspace \forall_{n \geqslant N(\veps)} \colon \enspace \abs{f_n(x) - f(x)} < \veps\]
 }
 
@@ -1525,7 +1526,7 @@ d.h.
 \(f_n \colon I \to \RR, \enspace n \in \NN, \enspace x_0 \in I\)
 \begin{enumerate}[label=(\arabic*)]
 	\item \(\displaystyle \forall_{n \in \NN} \lim_{x \to x_0} f_n(x) = \vphi_n\)
-	\item \(f_n \overset{n \to \infty}{\longrightsquigarrow} f, \enspace f \colon I \to \RR\)
+	\item \(f_n \overset{n \to \infty}{\rightrightarrows} f, \enspace f \colon I \to \RR\)
 \end{enumerate}
 \[\implies \quad \exists \lim_{x \to x_0} f(x) = \lim_{n \to \infty} \vphi_n\]
 }
@@ -1535,7 +1536,7 @@ d.h.
 \thm{}{
 \(f_n \in C^1\Le([a,b], \RR\Ri), \enspace \vphi \colon [a,b] \to \RR\)\\ %Werden Funktionenklasen C aufrechtgesetzt?
 \(f_n \overset{n \to \infty}{\longrightarrow} f\) punktweise für alle \(x \in [a,b]\)\\
-\(f_n' \overset{n \to \infty}{\longrightsquigarrow} \vphi\) gleichmäßig bzgl. \(x \in [a,b]\)\\
+\(f_n' \overset{n \to \infty}{\rightrightarrows} \vphi\) gleichmäßig bzgl. \(x \in [a,b]\)\\
 \(\implies \quad f \in C^1\Le([a,b], \RR\Ri) \text{ und } \vphi = f'\)
 \[\lim_{n \to \infty} \odv{f_n}{x} = \odv{}{x} \lim_{n \to \infty} f_n\]
 }
@@ -1553,7 +1554,7 @@ punktweise konvergiert.
 
 \dfn{}{
 Die Reihe \(\sum_{k=1}^{\infty} f_k\) konvergiert gleichmäßig bzgl. \(x \in I\) genau dann, wenn
-\[S_n(x) \overset{n \to \infty}{\longrightsquigarrow} S(x) \enspace = \enspace \sum_{k=1}^{\infty} f_k(x) \, .\]
+\[S_n(x) \overset{n \to \infty}{\rightrightarrows} S(x) \enspace = \enspace \sum_{k=1}^{\infty} f_k(x) \, .\]
 }
 
 \thm{}{
@@ -1565,7 +1566,7 @@ Die Reihe \(\sum_{k=1}^{\infty} f_k\) konvergiert gleichmäßig bzgl. \(x \in I\
 
 \section{Der Fixpunktsatz von \textsc{Banach}}
 
-\((M,d)\) metrischer Raum, \(M \neq \emptyset\)
+\((M,d)\) metrischer Raum, \(M \neq \varnothing\)
 
 \dfn{}{
 Man nennt \(T \colon M \to M\) eine Kontraktion, wenn ein \(\alpha < 1\) existiert, sodass für alle \(x, y \in M\)
@@ -1574,7 +1575,7 @@ Man nennt \(T \colon M \to M\) eine Kontraktion, wenn ein \(\alpha < 1\) existie
 
 \thm{}{
 Sei \((M,d)\) vollständig und \(T \colon M \to M\) eine Kontraktion. Dann gibt es genau ein \(\tilde{x} \in M\), sodass
-\[\underbrace{\tilde{x} = T\tilde{x}}_{\text{Fixpunkt}} \, .\]
+\[\underbrace{\tilde{x} = T\tilde{x}}_{\text{Fixpunkt}} \,.\]
 }
 
 \end{document}}

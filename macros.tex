@@ -6,7 +6,7 @@
 %\newcommand{\dif}[1]{\mathrm{d}#1} not needed (fixdif package)
 \newcommand{\Le}{\mleft}
 \newcommand{\Ri}{\mright}
-\newcommand{\RR}{\mathbb{R}}
+\newcommand{\RR}[1][]{\ensuremath{\ifstrempty{#1}{\mathbb{R}}{\mathbb{R}^{#1}}}}
 \newcommand{\ensp}{\enspace}
 \newcommand{\sbst}{\subset}
 \newcommand{\id}{\mathbb{1}}

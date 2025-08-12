@@ -1,10 +1,20 @@
 \usepackage[tmargin=2cm,rmargin=1in,lmargin=1in,margin=0.85in,bmargin=2cm,footskip=.2in]{geometry}
-\usepackage[default]{fontsetup}
+
 \usepackage{amsmath,amsthm,mathtools}
 \usepackage{mleftright}
 \usepackage{fixdif,derivative}
 \usepackage{physics2}
 \usephysicsmodule{ab.legacy}
+
+% SCHRIFTEN - MUSS NACH MATHTOOLS GELADEN WERDEN, SONST IST Z. B. \UNDEBRACE FEHLERHAFT!!!
+\PassOptionsToPackage{math-style=ISO}{unicode-math}
+\usepackage[default]{fontsetup}
+
+%\setmainfont{NewCM10-Book.otf} %Hier keine Mathematikschrift benutzen!
+%\setmathfont{NewCMMath-Book}
+%\setmathfont{NewCMMath-Book}[range=cal, StylisticSet=1]
+%\setmathfont{NewCMMath-Book}[range=scr]
+
 
 \usepackage[ngerman]{babel}
 \usepackage{titlesec}
@@ -16,11 +26,6 @@
 
 \usepackage{microtype}
 \usepackage[no-script, no-inner, no-close]{innerscript}
-
-\usepackage{unicode-math}
-\setmathfont{NewCMMath-Book}
-\setmathfont{NewCMMath-Book}[range=cal, StylisticSet=1]
-\setmathfont{NewCMMath-Book}[range=scr]
 
 %\usepackage[varbb]{newpxmath}
 \usepackage{xfrac}
@@ -405,7 +410,7 @@
 {ex}
 
 %================================
-% DEFINITION BOX
+%  BOX
 %================================
 
 \newtcbtheorem[number within=section]{Definition}{Definition}{enhanced,
