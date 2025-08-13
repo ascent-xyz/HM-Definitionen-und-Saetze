@@ -5,18 +5,32 @@
 \input{macros.tex}
 \input{letterfonts}
 
-\title{\sffamily \textbf{\Huge Definitionen und Sätze der HM 1 \& 2}}
-\author{\sffamily \huge{Julian Molt}}
+%\title{\sffamily \textbf{\Huge Definitionen und Sätze der HM 1 \& 2}}
+%\author{\sffamily \huge{Julian Molt}\thanks{text}}
 %Aus den Vorlesungen von Prof. Dr. Timo Weidl in WS 2024 \& SS 2025
-\date{}
+%\date{}
 
 \DeclarePairedDelimiter\pars{\lparen}{\rparen}
 
 \begin{document}
 
-\maketitle
-\newpage% or \cleardoublepage
-% \pdfbookmark[<level>]{<title>}{<dest>}
+%\maketitle
+
+\begin{titlepage}
+	\centering
+	\vspace*{4cm}
+	{\sffamily \textbf{\Huge Definitionen und Sätze der HM 1 \& 2}\par}
+	\vspace{1cm}
+	{\huge \textsc{Julian Molt}\par}
+	\vspace{1.5cm}
+	{\Large \today\par}
+	\vfill
+	{\large Aus den Vorlesungen von Prof. Dr. \textsc{Timo Weidl} in WS 2024 \& SS 2025 an der Universität Stuttgart}
+\end{titlepage}
+
+
+% or \cleardoublepage
+\newpage% \pdfbookmark[<level>]{<title>}{<dest>}
 \pdfbookmark[section]{\contentsname}{toc}
 \tableofcontents
 \pagebreak
@@ -919,6 +933,11 @@ Für \(\sigma,\tau \in S_n\) gilt immer
 
 \section{Permutationen}
 
+\thm{}{
+Für \(\sigma, \tau \in S_n\) gilt immer
+\[\veps(\sigma \tau) = \veps(\sigma) \cdot \veps(\tau) \,.\]
+}
+
 \section{Determinanten}
 
 \dfn{}{
@@ -930,12 +949,12 @@ Für \(\sigma,\tau \in S_n\) gilt immer
 \(\begin{pmatrix}
 	a_{11} & \dots & a_{1k} & \dots & a_{1n}\\
 	\vdots &        & \vdots &        & \vdots\\
-	a_{l1} & \dots & a_{lk} & \dots & a_{ln}\\
+	a_{\ell 1} & \dots & a_{\ell k} & \dots & a_{\ell n}\\
 	\vdots &        & \vdots &        & \vdots\\
 	a_{n1} & \dots & a_{nk} & \dots & a_{nn}
 \end{pmatrix}\)
 \begin{align*}
-	\det A &= \sum_{j=1}^{n}(-1)^{l+j} \cdot a_{lj} \cdot M_{lj}\\
+	\det A &= \sum_{j=1}^{n}(-1)^{\ell+j} \cdot a_{\ell j} \cdot M_{\ell j}\\
 	&= \sum_{i=1}^{n}(-1)^{i+k} \cdot a_{ik} \cdot M_{ik}
 \end{align*}
 }
@@ -1045,11 +1064,16 @@ lineare Hülle des Systems \(\{f_1,\hdots,f_k\}\)
 }
 
 \thm{}{
-\(A \cdot \mathbb{x} = \mathbb{f}\) ist für jedes \(\mathbb{f} \in \KK^n\) lösbar, genau dann wenn
-\[r(A) = m.\]
+\(A \cdot \mathbb{x} = \mathbb{f}\) ist für jedes \(\mathbb{f} \in \KK^n\) lösbar, genau dann, wenn
+\[r(A) = m \,.\]
 }
 
-\section{Determinante}
+\thm{}{
+Das LGS \(A\mathbb{x} = \mathbb{f}\) besitze eine Lösung \(\mathbb{x} = \mathbb{x}_p \in \KK[n]\). Dann ist diese eindeutig genau dann, wenn
+\[\ker(A) = \Le\{\mathbb{0}_{\KK[n]}\Ri\} \,.\]
+}
+
+\section{LGS: Allgemeiner Fall}
 
 \section{Das Spektrum. Eigenvektoren. Resolvente.}
 
@@ -1093,7 +1117,6 @@ sei\\
 \[p \colon M^s \to M^s\]
 }
 
-%Hier fehlen die Sachen aus VL21
 
 \dfn{}{
 Eine Matrix \(B \in M^{n,n}\) heißt diagonalisierbar, genau dann, wenn sie zu einer Diagonalmatrix ähnlich ist. Das heißt, es gibt \( A = \diag{a_1, \hdots, a_n}\) und es gibt \(X \in M^{n,n}, \det{X} \neq 0\), sodass
@@ -1123,7 +1146,7 @@ Eine Matrix \(B \in M^{n,n}\) heißt diagonalisierbar, genau dann, wenn sie zu e
 
 \dfn{}{
 Ein System von Vektoren \(\{\mathbb{y}_1, \hdots, \mathbb{y}_k\}\) heißt orthonormiert (ON), genau dann, wenn
-\[\langle \mathbb{y}_j, \mathbb{y}_l \rangle = \updelta_{jl} \qquad j,l = 1, \hdots, k\]
+\[\mleft\langle \mathbb{y}_j, \mathbb{y}_\ell \mright\rangle = \updelta_{j\ell} \qquad j,\ell = 1, \hdots, k\]
 ONS System von orthonormalen Vektoren.\\
 Bildet ein ONS eine Basis im \(\KK^n\), spricht man von einer Orthonormalbasis (ONB).
 }
@@ -1202,7 +1225,7 @@ Zwei normale Matrizen \(A\) und \(B\) kommutieren genau dann, wenn sie eine geme
 \dfn{}{
 Wir nennen \(H = F + G\) eine direkte Summe von Unterräumen, wenn für jedes \(h \in H\) die Darstellung \(h = f + g, \enspace f \in F, \enspace g \in G\) eindeutig ist:
 \[H = F \mathrel{\dot{+}} G\]
-} % Problem mit dem Dot über Plus
+}
 
 \thm{}{
 \(F, G \sbst V\) Unterräume\\
@@ -1239,19 +1262,21 @@ mithilfe einer regulären Matrix \(X \in M^n\) darstellen.
 \(\xi_j = \Le\langle x, f_j \Ri\rangle, \enspace j = 1,\hdots,s\)\\
 Es gilt immer:
 \[\norm{x - \sum_{j=1}^{s} \beta_j f_j} \geqslant \norm{x - \sum_{j=1}^{s} \xi_j f_j}\]
-} %Hier nochmal drüberschauen
+Gleichheit (\enquote{\(=\)}) \(\Leftrightarrow \beta_j = \xi_j, \enspace j=1,\hdots,s\)
+}
 
 \thm{}{
 Für jedes \(y = \beta_1 f_1 + \hdots + \beta_s f_s \in F\) gilt
 \[\norm{x - y} \geqslant \norm{x - x_F}\]
-} %Hier auch weird
+mit \enquote{\(=\)} \(\Leftrightarrow y = x_F\).
+}
 
 \thm{Projektionssatz}{
 Sei \(F \sbst V\) ein Unterraum. Dann existiert für jedes \(x \in V\) genaue eine Zerlegung \(x = x_{F} + x_G\) mit \(x_F \in F\) und \(x_G \perp F\).
 }
 
 \dfn{}{
-\(P_F \colon V \to F\) mit \(P_F x = x_F\) nennt man die orthogonale Projektion auf \(F\).
+\(P_F \colon V \to F\) mit \(P_F \,x = x_F\) nennt man die orthogonale Projektion auf \(F\).
 }
 
 \dfn{}{
@@ -1261,8 +1286,10 @@ Sei \(F \sbst V\) ein Unterraum. Dann existiert für jedes \(x \in V\) genaue ei
 \section{Selbstadjungierte Operatoren und quadratische Formen}
 
 \thm{}{
-Zu jeder sesqui-linearen Form \(a\) existiert genau eine lineare Abbildung \(\mathcal{A} \colon V \to V\), so, dass (*) gilt.
-} %Der hier kommt doch safe nicht dran, asonsten fehlt Gleichung (*)
+Zu jeder sesqui-linearen Form \(a\) existiert genau eine lineare Abbildung \(\mathcal{A} \colon V \to V\), so, dass
+\[a[x,y] = \langle \mathcal{A}x, y \rangle\]
+mit \(\mathcal{A} \colon V \to V \) linear, gilt.
+} %Der hier kommt doch safe nicht dran
 
 \dfn{}{
 Der zu \(\mathcal{A}\) adjungierte Operator \(A^*\) ist durch \(a^*\) gegeben:
@@ -1273,9 +1300,10 @@ Mit \(\Le\langle A^*x, y\Ri\rangle = \langle x, \mathcal{A}y\rangle\) und \(\ove
 
 \section{Stetige lineare Operatoren}
 
-\dfn{}{
 \(E, F\) Vektorräume über \(\KK \in \{\RR, \CC\}\) mit Normen \(\norm{\cdot}_E\) und \(\norm{\cdot}_F\).\\
 \(F \colon E \to F\) linear.\\
+
+\dfn{}{
 Ein linearer Operator \(T \colon E \to F\) heißt beschränkt, genau dann, wenn
 \[\exists_{C>0} \enspace \forall_{x \in E} \colon \enspace \norm{Tx}_F \leqslant C \cdot \norm{x}_E \,.\]
 }
@@ -1291,14 +1319,13 @@ Folgende Aussagen sind äquivalent:
 
 \dfn{}{
 \(\mathcal{L}(E,F)\) sei die Menge aller stetigen linearen Abbildungen \(T \colon E \to F\).
-% UNVOLLSTÄNDIG
 }
 
 \thm{Operatornorm}{
 \(\mathcal{L}(E,F)\) ist ein Vektorraum über \(\KK\).
-\[\norm{T\,}_{\mathcal{L}(E,F)} = \sup_{x \in E, x \neq 0} \frac{\norm{Tx}_F}{\norm{x}_E}\]
+\[\norm*{T}_{\mathcal{L}(E,F)} = \sup_{x \in E, x \neq 0} \frac{\norm{Tx}_F}{\norm{x}_E}\] %\norm*{} setzt nicht skalierte Delimiter, da skalierte Delimiter zu schlechtem Spacing rechts führen. (Mathopen und Mathclose Symbole)
 ist eine Norm auf \(\mathcal{L}(E,F)\). Sind \(E\) und \(F\) vollständig, dann ist auch \(\mathcal{L}(E,F)\) vollständig.
-}%Die Norm nur von T hat seltsames Spacing nach rechts.
+}
 
 \chapter{Zur Diff.-rechnung für Funktionen mehrerer Var.}
 
@@ -1311,7 +1338,7 @@ ist eine Norm auf \(\mathcal{L}(E,F)\). Sind \(E\) und \(F\) vollständig, dann 
 \dfn{}{
 \(f\) ist im Punkt \(x^{(0)} \in U\) (\textsc{Fréchet})-differenzierbar, genau dann, wenn \(A \in \mathcal{L}(E,F)\) mit
 \[f\Le(x^{(0)} + h\Ri) = f\Le(x^{(0)}\Ri) + A \cdot h + \mathcal{o}(h), \quad h \to 0_E \,.\]
-Dann ist \(\eval{\d f}_{x=x^{(0)}} = \mathcal{A}\). %Fehlt hier möglicherweiße noch ein der unter Teil des Ableitungsoperators?
+Dann ist \(\eval{\d f}_{x=x^{(0)}} = \mathcal{A}\).
 }
 
 \dfn{}{
@@ -1347,6 +1374,10 @@ Wenn \(f\) in \(x^{(0)}\) \textsc{Fréchet}-differenzierbar ist, dann ist \(f\) 
 
 \section{Produkt- und Kettenregel}
 
+\(\Le(E, \norm{\cdot}_E\Ri)\)\vspace{3pt}\\
+\(\Le(F, \norm{\cdot}_F\Ri)\)\vspace{3pt}\\
+\(U \sbst E\) offen, \(x \in U\)
+
 \thm{}{
 \(f \colon U \to F\) und \(\alpha \colon U \to \RR\) seien in \(x^{(0)} \in U\) \textsc{Fréchet}-differenzierbar. Dann ist \(\alpha \cdot f \colon U \to F\) in \(x^{(0)}\) \textsc{Fréchet}-differenzierbar.
 \[(\alpha f)'\Le(x^{(0)}\Ri) = \alpha \Le(x^{(0)}\Ri) f'\Le(x^{(0)}\Ri) + f\Le(x^{(0)}\Ri) \alpha '\Le(x^{(0)}\Ri)\]
@@ -1356,8 +1387,10 @@ Wenn \(f\) in \(x^{(0)}\) \textsc{Fréchet}-differenzierbar ist, dann ist \(f\) 
 \(f\) sei in \(x^{(0)} \in U\) \textsc{Fréchet}-differenzierbar.\\
 \(g\) sei in \(y^{(0)} \in V\) \textsc{Fréchet}-differenzierbar.
 \[\implies \quad \text{Dann ist } g \circ f \colon U \to G \text{ \textsc{Fréchet}-differenzierbar.}\]
+
+\[\Le(g \circ f\Ri)'\Le(x^{(0)}\Ri) = g'\Le(f\Le(x^{(0)}\Ri)\Ri) \cdot f'\Le(x^{(0)}\Ri)\]
 }
-%Möglicherweise ist hier noch was
+
 
 \section{Hauptsatz der Differenzialrechnung}
 
@@ -1381,7 +1414,7 @@ Ist \(g\) in \(x^{(0)} \in U\) partiell in \(x_k\) differenzierbar, dann sei
 Wenn in \(U\) beide partiellen Ableitungen
 \[\pdv{f}{x_k,x_j} \text{ und } \pdv{f}{x_j,x_k}\]
 existieren, und beide stetig sind, dann gilt auf \(U\)
-\[\pdv{f}{x_k,x_j} = \pdv{f}{x_j,x_k}\,.\]
+\[\pdv{f}{x_k,x_j} = \pdv{f}{x_j,x_k} \,.\]
 }
 
 \dfn{}{
@@ -1391,9 +1424,21 @@ Wenn \(f'(\cdot)\) in \(x^{(0)} \in U\) \textsc{Fréchet}-differenzierbar ist, d
 
 \section{\texorpdfstring{Der Satz von \textsc{Taylor}}{Der Satz von Taylor}}
 
-%SUS
+\(f \colon U \sbst E \to F\), \(U\) offen\\
+\(f\) ist in \(U\) \(m\)-fach \textsc{Fréchet}-differenzierbar
+
+\thm{Die Formel von \textsc{Taylor}}{
+\[f\Le(x^{(0)} + h\Ri) = f\Le(x^{(0)}\Ri) + \sum_{k=1}^{m} \frac{1}{k!} f^{(k)}\Le(x^{(0)}\Ri) h^k + r_m\Le(x^{(0)},h\Ri)\]
+wobei:
+\[r_m\Le(x^{(0)}, h\Ri) = \mathcal{o}\Le(\norm{h}_E^m\Ri) \qquad \text{ für } h \to 0_E \,.\]
+}
 
 \section{Extremwerte von Funktionen mit mehreren Veränderlichen}
+
+\(\Le(E, \norm{\cdot}_E\Ri)\)\vspace{3pt}\\
+\(F = \RR\)\\
+\(U \sbst E\) offen\\
+\(f \colon U \sbst E \to \RR\)
 
 \dfn{}{
 \(f\) nimmt in \(x^{(0)}\) ein\\
@@ -1412,7 +1457,7 @@ gelten.
 \section{Der Satz über implizite Funktionen}
 
 \dfn{Lokale Auflösbarkeit}{
-\(\Le(x^{(0)}, y^{(0)}\Ri) \in W\)\vspace{4pt}\\
+\(\Le(x^{(0)}, y^{(0)}\Ri) \in W\)\vspace{3pt}\\
 \(\Phi\Le(x^{(0)}, y^{(0)}\Ri) = 0\)\\
 \(\Phi(x,y) = 0\) ist lokal in einer Umgebung von \(\Le(x^{(0)}, y^{(0)}\Ri)\) zu \(y = f(x)\) auflösbar, genau dann, wenn
 \[\exists_{\veps > 0} \enspace \exists_{\delta > 0} \enspace \exists f \colon \enspace U_{\veps}\Le(x^{(0)}\Ri) \to U_{\delta}\Le(y^{(0)}\Ri)\]
@@ -1430,8 +1475,9 @@ gelten.
 \(\Phi\Le(x^{(0)}, y^{(0)}\Ri) = 0\)\vspace{3pt}\\
 \(\Phi\) sei aus der Klasse \(C^p, \enspace p \geqslant 1\) (d.h. alle partiellen Ableitungen bis zur Ordnung \(p\) existieren und sind stetig).\vspace{3pt}\\
 \(\Phi_y'\Le(x^{(0)}, y^{(0)}\Ri)\) ist invertierbar
-\[\implies \quad \Phi \text{ ist lokal zu } y = f(x) \text{ auflösbar und } f \text{ ist von der Klasse } C^p \, .\]
-} %Nicht sicher ob vollständig. Vllt. gehört nächste Zeile noch dazu.
+\[\implies \quad \Phi \text{ ist lokal zu } y = f(x) \text{ auflösbar und } f \text{ ist von der Klasse } C^p.\]
+\[f'\Le(x^{(0)}\Ri) = - \Le[\Phi_y'\Le(x^{(0)}, y^{(0)}\Ri)\Ri]^{-1} \Phi_x'\Le(x^{(0)}, y^{(0)}\Ri)\]
+}
 
 \section{Umkehrfunktion}
 
@@ -1464,11 +1510,11 @@ idk
 \end{enumerate} %Die Klammern von F(x) und F\Le(x\Ri) sind gleich groß, doch der Abstand zwischen linker Klammer und F ist unterschiedlich. Wieso?
 }
 
-%Vielleicht fehlt hier noch was
-
 \chapter{Funktionenfolgen}
 
 \section{Doppelfolgen, Gleichmäßigkeit}
+
+\((M,d)\) metrischer Raum
 
 \dfn{Doppelfolge}{
 \(a \colon \NN \times \NN \to M\)\\
@@ -1506,19 +1552,20 @@ Damit darf ich unter der zusätzlichen Annahme der Gleichmäßigkeit eines der G
 }
 
 \section{Funktionenfolgen}
-\((M,d) = (\RR, \abs{\cdot}), \enspace I \sbst \RR, \enspace I \neq \emptyset\)\\
+
+\((M,d) = (\RR, \abs{\cdot}), \enspace I \sbst \RR, \enspace I \neq \varnothing\)\\
 \(f, f_n \colon I \to \RR, \enspace n \in \NN\)\\
 \(\Le(f_n\Ri)_{n \in \NN}\) Funktionenfolge
 
 \dfn{}{
-\(f_n \overset{n \to \infty}{\longrightarrow} f\) punktweise bzgl. \(x \in I\) genau dann, wenn % Fehlt hier vielleicht ein zweiter Pfeil für gleichmäßige Konv.? Ne glaube nicht, aber besser nochmal nachschauen
+\(f_n \overset{n \to \infty}{\longrightarrow} f\) punktweise bzgl. \(x \in I\) genau dann, wenn
 \[\forall_{x \in I} \lim_{n \to \infty} f_n(x) = f(x)\]
 d.h.
 \[\forall_{x \in I} \enspace \forall_{\veps > 0} \enspace \exists_{N(\veps,x)} \enspace \forall_{n>N} \colon \enspace \abs{f_n(x) - f(x)} < \veps\]
 }
 
 \dfn{}{
-\(f_n \overset{n \to \infty}{\rightrightarrows} f\) gleichmäßig bzgl. \(x \in I\) genau dann, wenn %Zwie übereinanderliegende Pfeile?
+\(f_n \overset{n \to \infty}{\rightrightarrows} f\) gleichmäßig bzgl. \(x \in I\) genau dann, wenn
 \[\forall_{\varepsilon > 0} \enspace \exists_{N(\veps)} \enspace \forall_{x \in I} \enspace \forall_{n \geqslant N(\veps)} \colon \enspace \abs{f_n(x) - f(x)} < \veps\]
 }
 
@@ -1534,7 +1581,7 @@ d.h.
 \section{Die Folge der Ableitungen}
 
 \thm{}{
-\(f_n \in C^1\Le([a,b], \RR\Ri), \enspace \vphi \colon [a,b] \to \RR\)\\ %Werden Funktionenklasen C aufrechtgesetzt?
+\(f_n \in C^1\Le([a,b], \RR\Ri), \enspace \vphi \colon [a,b] \to \RR\)\\
 \(f_n \overset{n \to \infty}{\longrightarrow} f\) punktweise für alle \(x \in [a,b]\)\\
 \(f_n' \overset{n \to \infty}{\rightrightarrows} \vphi\) gleichmäßig bzgl. \(x \in [a,b]\)\\
 \(\implies \quad f \in C^1\Le([a,b], \RR\Ri) \text{ und } \vphi = f'\)
