@@ -5,27 +5,27 @@
 \input{macros.tex}
 \input{letterfonts}
 
-%\title{\sffamily \textbf{\Huge Definitionen und Sätze der HM 1 \& 2}}
-%\author{\sffamily \huge{Julian Molt}\thanks{text}}
-%Aus den Vorlesungen von Prof. Dr. Timo Weidl in WS 2024 \& SS 2025
-%\date{}
-
 \DeclarePairedDelimiter\pars{\lparen}{\rparen}
 
 \begin{document}
 
-%\maketitle
-
 \begin{titlepage}
 	\centering
-	\vspace*{4cm}
+	\vspace*{2.5cm}
+
 	{\sffamily \textbf{\Huge Definitionen und Sätze der HM 1 \& 2}\par}
-	\vspace{1cm}
+	\vspace{2cm}
 	{\huge \textsc{Julian Molt}\par}
-	\vspace{1.5cm}
+	\vspace{1cm}
 	{\Large \today\par}
-	\vfill
-	{\large Aus den Vorlesungen von Prof. Dr. \textsc{Timo Weidl} in WS 2024 \& SS 2025 an der Universität Stuttgart}
+
+	\vspace{\fill}
+
+	{\scalebox{6}{\(\displaystyle \int\limits_{\text{\twemoji{snowflake}}}^{\text{\twemoji{sun}}}  \d s\)}}
+
+	\vspace{\fill}
+
+	{Aus den Vorlesungen von Prof. Dr. \textsc{Timo Weidl} in WS 2024 \& SS 2025 an der Universität Stuttgart.}
 \end{titlepage}
 
 
@@ -101,8 +101,8 @@ in \(\QQ \enspace d(a_n,a_m) = \abs{a_n-a_m}\)
 \section{Die reellen Zahlen}
 
 \dfn{Grundrechenarten auf \(\RR\)}{
-\(r,s \in \RR\)\\
-\(r = \Le[\Le(r_k\Ri)_{k=1}^{\infty}\Ri] \quad \Le(r_k\Ri)_{k=1}^{\infty} \in \CauchySeq(\QQ)\)\\
+\(r,s \in \RR\)\vspace{3pt}\\
+\(r = \Le[\Le(r_k\Ri)_{k=1}^{\infty}\Ri] \quad \Le(r_k\Ri)_{k=1}^{\infty} \in \CauchySeq(\QQ)\)\vspace{3pt}\\
 \(r = \Le[\Le(s_k\Ri)_{k=1}^{\infty}\Ri] \quad \Le(s_k\Ri)_{k=1}^{\infty} \in \CauchySeq(\QQ)\)\\
 \begin{align*}
 	r + s &\eqdef \Le[\Le(r_k + s_k\Ri)_{k=1}^{\infty}\Ri]_{\sim}\\
@@ -313,12 +313,12 @@ Ein metrischer Raum \((M,d)\) ist vollständig, g.d.w. jede \textsc{Cauchy}-Folg
 \dfn{Häufungspunkt einer Menge}{
 \((M,d)\) metrischer Raum\\
 Sei \(X \sbst M\). Wir nennen \(x_0 \in M\) Häufungspunkt von \(X\) g.d.w.\\
-\[\forall_{\varepsilon > 0} \colon \enspace U_{\varepsilon}(x_0) \cap \Le(X \backslash \{x_0\}\Ri) \neq \varnothing\]
+\[\forall_{\varepsilon > 0} \colon \enspace U_{\varepsilon}(x_0) \cap \Le(X \backslash \{x_0\}\Ri) \neq \emptyset\]
 }
 
 \dfn{Isolierter Punkt}{
 Sei \(X \sbst M\). Wir nennen \(x_0 \in X\) einen isolierten Punkt von \(X\) g.d.w.
-\[\exists_{\varepsilon > 0} \colon \enspace U_{\varepsilon}(x_0) \cap \Le(X \backslash \{x_0\}\Ri) = \varnothing\]
+\[\exists_{\varepsilon > 0} \colon \enspace U_{\varepsilon}(x_0) \cap \Le(X \backslash \{x_0\}\Ri) = \emptyset\]
 }
 
 \dfn{}{
@@ -329,7 +329,7 @@ Wir nennen \(x_0 \in M\)\\
     \item äußeren Punkt zu \(X\)\\[1ex]
     \(\exists_{\varepsilon > 0} \colon \enspace U_{\varepsilon}(x_0) \sbst (M \backslash X)\)\\
     \item Randpunkt von \(X\)\\[1ex]
-    \(\forall_{\varepsilon > 0} \colon \enspace \Le(U_{\varepsilon}(x_0) \cap X \neq \varnothing\Ri) \wedge \Le(U_{\varepsilon}(x_0) \cap (M \backslash X) \neq \varnothing\Ri)\)
+    \(\forall_{\varepsilon > 0} \colon \enspace \Le(U_{\varepsilon}(x_0) \cap X \neq \emptyset\Ri) \wedge \Le(U_{\varepsilon}(x_0) \cap (M \backslash X) \neq \emptyset\Ri)\)
 \end{itemize}
 
 \(\interior{X}\) Menge der inneren Punkte\\
@@ -455,12 +455,12 @@ welche gegen \(y\) konvergiert.
 }
 
 \dfn{Kompaktheit}{
-\((M,\,d)\) metrischer Raum, \(K \sbst M\)\\
+\((M,d)\) metrischer Raum, \(K \sbst M\)\\
 \(K\) ist (folgen)kompakt, g.d.w. jede Folge aus \(K\) mindestens einen Häufungspunkt aus \(K\) enthält.
 }
 
 \thm{\textsc{Bolzano-Weierstraß}}{
-\((M,\,d) = \Le(\bbK^m,\,d_{|\cdot|}\Ri)\)\\
+\((M,d) = \Le(\bbK^m,\,d_{|\cdot|}\Ri)\)\vspace{3pt}\\
 Für eine Menge \(K \sbst \bbK^m\) gilt Kompaktheit, g.d.w. Beschränktheit und Abgeschlossenheit gelten.
 }
 
@@ -1191,7 +1191,7 @@ Jede hermitsche Matrix \(A \in M^n(\CC)\) besitzt eine ONB aus Eigenwerten im \(
 Unitäre Matrizen sind unitär diagonalisierbar.
 }
 
-\section{Wechsel des Koordinatensystems -- Basiswechsel}
+\section{Wechsel des Koordinatensystems – Basiswechsel}
 
 \thm{}{
 \(A \in M^n\) ist unitär diagonalisierbar, falls
@@ -1494,7 +1494,7 @@ idk
 }
 
 
-\section{Darstellung von Gradient und \textsc{Laplace} in verschiedenen Koordinatensystemen}
+\section{\texorpdfstring{Darstellung von Gradient und \textsc{Laplace} in verschiedenen Koordinatensystemen}{Darstellung von Gradient und Laplace in verschiedenen Koordinatensystemen}}
 
 \section{Extremwerte unter Nebenbedingungen}
 
@@ -1512,7 +1512,7 @@ idk
 
 \chapter{Funktionenfolgen}
 
-\section{Doppelfolgen, Gleichmäßigkeit}
+\section{Doppelfolgen. Gleichmäßigkeit.}
 
 \((M,d)\) metrischer Raum
 
@@ -1553,7 +1553,7 @@ Damit darf ich unter der zusätzlichen Annahme der Gleichmäßigkeit eines der G
 
 \section{Funktionenfolgen}
 
-\((M,d) = (\RR, \abs{\cdot}), \enspace I \sbst \RR, \enspace I \neq \varnothing\)\\
+\((M,d) = (\RR, \abs{\cdot}), \enspace I \sbst \RR, \enspace I \neq \emptyset\)\\
 \(f, f_n \colon I \to \RR, \enspace n \in \NN\)\\
 \(\Le(f_n\Ri)_{n \in \NN}\) Funktionenfolge
 
@@ -1611,9 +1611,9 @@ Die Reihe \(\sum_{k=1}^{\infty} f_k\) konvergiert gleichmäßig bzgl. \(x \in I\
 
 \section{Potenzreihen}
 
-\section{Der Fixpunktsatz von \textsc{Banach}}
+\section{\texorpdfstring{Der Fixpunktsatz von \textsc{Banach}}{Der Fixpunktsatz von Banach}}
 
-\((M,d)\) metrischer Raum, \(M \neq \varnothing\)
+\((M,d)\) metrischer Raum, \(M \neq \emptyset\)
 
 \dfn{}{
 Man nennt \(T \colon M \to M\) eine Kontraktion, wenn ein \(\alpha < 1\) existiert, sodass für alle \(x, y \in M\)
